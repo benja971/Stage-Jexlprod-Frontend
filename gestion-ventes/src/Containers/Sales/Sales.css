@@ -1,0 +1,18 @@
+.sales-header {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 1em;
+}
+
+.btn-add-sale {
+	user-select: none;
+	text-decoration: none;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 0.2em 1em;
+	box-shadow: 2px 2px 5px #f4f4f4;
+	background-color: #f4f4f4;
+	color: black;
+	margin: 10px 40px 0 auto;
+}

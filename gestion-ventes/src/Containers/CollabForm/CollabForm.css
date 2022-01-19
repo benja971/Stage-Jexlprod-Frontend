@@ -28,6 +28,8 @@ div.btn-container {
 	justify-content: space-evenly;
 	margin-top: 20px;
 	align-items: center;
+	font-size: 14px;
+	font-weight: 600;
 }
 
 div.btn-container a {
@@ -41,9 +43,8 @@ div.btn-container a {
 	box-shadow: 2px 2px 5px grey;
 	user-select: none;
 	border-radius: 5px;
-	font-size: 14px;
+
 	padding-top: 2px;
-	font-weight: 600;
 }
 
 div.btn-container a:hover {
@@ -106,7 +107,8 @@ form input {
 
 form select:hover,
 form input:hover,
-form button:hover {
+form button:hover,
+form a:hover {
 	transform: scale(1.02);
 }
 

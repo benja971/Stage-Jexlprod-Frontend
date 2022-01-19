@@ -31,7 +31,7 @@ export const loadCollaborateurs = () => dispatch => {
 		});
 };
 
-export const requestDB = (file, body, id) => dispatch => {
+export const requestDB = (file, body) => dispatch => {
 	console.log(JSON.stringify(body, "\n", 4));
 
 	fetch(`http://localhost:80/Stage-Jexlprod-Backend/Collaborateurs/${file}.php`, {

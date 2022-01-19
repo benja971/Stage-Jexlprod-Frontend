@@ -22,18 +22,17 @@ export default function CollabForm() {
 	const inputsRef = useRef([]);
 	const errorsRef = useRef([]);
 
-	let collabor = {};
-	isNew
-		? (collabor = {
-				civilite: "M",
-				nom: "",
-				prenom: "",
-				email: "",
-				statut: 0,
-		  })
-		: (collabor = { ...data.collaborateur });
-
-	const [collab, setCollab] = useState(collabor);
+	const [collab, setCollab] = useState(
+		isNew
+			? {
+					civilite: "M",
+					nom: "",
+					prenom: "",
+					email: "",
+					statut: 0,
+			  }
+			: { ...data.collaborateur },
+	);
 
 	const [isFormValid, setIsFormValid] = useState(isNew ? false : true);
 
@@ -50,7 +49,7 @@ export default function CollabForm() {
 	const validForm = () => {
 		let isValid = true;
 		for (let key in inputsRef.current) {
-			if (inputsRef.current[key] === "" || inputsRef.current[key].classList.contains("error")) {
+			if (inputsRef.current[key].value === "" || inputsRef.current[key].classList.contains("error")) {
 				isValid = false;
 				break;
 			}
