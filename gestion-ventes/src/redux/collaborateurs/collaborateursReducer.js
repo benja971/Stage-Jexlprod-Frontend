@@ -16,7 +16,6 @@ export const collaborateursReducer = (state = INITIAL_STATE, action) => {
 };
 
 export const loadCollaborateurs = () => dispatch => {
-	console.log("loadCollaborateurs");
 	fetch("http://localhost:80/Stage-Jexlprod-Backend/Collaborateurs/LoadCollaborateurs.php", {
 		method: "GET",
 	})
