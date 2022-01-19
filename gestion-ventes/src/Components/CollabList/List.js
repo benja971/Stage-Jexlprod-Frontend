@@ -10,9 +10,7 @@ import "./List.css";
 export default function CollabList() {
 	const collaborateurs = useSelector(state => state.collaborateursReducer.collaborateurs);
 
-	const { isPopupVisible, id } = useSelector(state => state.delPopupReducer);
-
-	console.log(id);
+	const isPopupVisible = useSelector(state => state.delPopupReducer.isPopupVisible);
 
 	const dispatch = useDispatch();
 
@@ -37,7 +35,7 @@ export default function CollabList() {
 						<th>Nom</th>
 						<th>Prénom</th>
 						<th>Volume</th>
-						<th>Action</th>
+						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
