@@ -30,6 +30,7 @@ body {
 	user-select: none;
 	text-align: center;
 	margin: 15px 0;
+	cursor: pointer;
 }
 
 .btn-add {

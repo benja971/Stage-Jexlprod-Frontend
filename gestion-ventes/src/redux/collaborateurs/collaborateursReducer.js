@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
 	collaborateurs: [],
+	annee: new Date().getFullYear(),
 };
 
 export const collaborateursReducer = (state = INITIAL_STATE, action) => {
@@ -10,12 +11,19 @@ export const collaborateursReducer = (state = INITIAL_STATE, action) => {
 				collaborateurs: [...action.payload],
 			};
 
+		case "SET_ANNEE":
+			return {
+				...state,
+				annee: action.payload,
+			};
+
 		default:
 			return state;
 	}
 };
 
 export const loadCollaborateurs = annee => dispatch => {
+	console.log("année", annee);
 	fetch("http://localhost:80/Stage-Jexlprod-Backend/Collaborateurs/LoadCollaborateurs.php", {
 		method: "POST",
 		headers: {
@@ -45,6 +53,7 @@ export const requestDB = (file, body) => dispatch => {
 		},
 		body: JSON.stringify(body),
 	});
+
 	console.log("Fetch requestDB");
 };
 

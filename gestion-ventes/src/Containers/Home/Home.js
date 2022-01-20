@@ -4,11 +4,19 @@ import CollabList from "../../Components/CollabList/List";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux";
 
 export default function Home() {
 	const [annees, setAnnees] = useState([]);
 
-	const handleChange = e => setAnnees(parseInt(e.target.value));
+	const dispatch = useDispatch();
+
+	const handleChange = e => {
+		dispatch({
+			type: "SET_ANNEE",
+			payload: parseInt(e.target.value),
+		});
+	};
 
 	useEffect(() => {
 		fetch("http://localhost/Stage-Jexlprod-Backend/Divers/GetYears.php", {
@@ -16,8 +24,11 @@ export default function Home() {
 		})
 			.then(response => response.json())
 			.then(data => {
-				console.log(data);
 				setAnnees(data);
+				dispatch({
+					type: "SET_ANNEE",
+					payload: parseInt(data[0]),
+				});
 			});
 	}, []);
 

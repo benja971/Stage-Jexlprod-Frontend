@@ -3,7 +3,7 @@ import Home from "./Containers/Home/Home";
 import { Route, Routes } from "react-router-dom";
 import CollabForm from "./Containers/CollabForm/CollabForm";
 import Sales from "./Containers/Sales/Sales";
-import SaleForm from "./Components/SaleForm/SaleForm";
+import SaleForm from "./Containers/SaleForm/SaleForm";
 
 function App() {
 	return (

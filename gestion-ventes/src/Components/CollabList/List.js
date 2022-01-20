@@ -8,8 +8,7 @@ import DelPopup from "../DelPopup/DelPopup";
 import "./List.css";
 
 export default function CollabList() {
-	const collaborateurs = useSelector(state => state.collaborateursReducer.collaborateurs);
-
+	const { collaborateurs, annee } = useSelector(state => state.collaborateursReducer);
 	const isPopupVisible = useSelector(state => state.delPopupReducer.isPopupVisible);
 
 	const dispatch = useDispatch();
@@ -21,9 +20,11 @@ export default function CollabList() {
 		});
 	};
 
+	console.log(collaborateurs);
+
 	useEffect(() => {
-		dispatch(loadCollaborateurs("2022"));
-	}, []);
+		dispatch(loadCollaborateurs(annee));
+	}, [annee]);
 
 	return (
 		<>
@@ -46,7 +47,7 @@ export default function CollabList() {
 								<td>{i.nom}</td>
 								<td>{i.prenom}</td>
 								<td>
-									{i.volume}
+									{i.volume || 0}
 									<Link className='euro' to={"/"}>
 										€
 									</Link>
