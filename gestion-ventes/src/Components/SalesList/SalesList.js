@@ -7,21 +7,18 @@ import { loadVentes } from "../../redux/ventes/ventesReducer";
 import { Link } from "react-router-dom";
 
 export default function SalesList() {
-	const ventes = useSelector(state => state.ventesReducer.ventes);
+	const { ventes, annee } = useSelector(state => state.ventesReducer);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(loadVentes());
-	}, []);
-
-	console.log(ventes);
+		dispatch(loadVentes(annee));
+	}, [annee]);
 
 	return (
 		<div>
 			<table>
 				<thead>
 					<tr>
-						<th>Id</th>
 						<th>Libéllé</th>
 						<th>Prix</th>
 						<th>Date</th>
@@ -32,12 +29,11 @@ export default function SalesList() {
 					{ventes.map(vente => {
 						return (
 							<Sale key={uuidv4()}>
-								<td>{vente.id}</td>
 								<td>{vente.adresse}</td>
 								<td>{vente.prix} €</td>
 								<td>{vente.date}</td>
 								<td id='action'>
-									<Link to='./modifier'>
+									<Link to='/ventes/modifier'>
 										<i className='material-icons edit-icon'>mode_edit</i>
 									</Link>
 									<button onClick={() => {}}>

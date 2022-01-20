@@ -11,7 +11,7 @@ export const collaborateursReducer = (state = INITIAL_STATE, action) => {
 				collaborateurs: [...action.payload],
 			};
 
-		case "SET_ANNEE":
+		case "SET_ANNEE_COLLABORATEURS":
 			return {
 				...state,
 				annee: action.payload,
@@ -23,7 +23,6 @@ export const collaborateursReducer = (state = INITIAL_STATE, action) => {
 };
 
 export const loadCollaborateurs = annee => dispatch => {
-	console.log("année", annee);
 	fetch("http://localhost:80/Stage-Jexlprod-Backend/Collaborateurs/LoadCollaborateurs.php", {
 		method: "POST",
 		headers: {
@@ -44,8 +43,6 @@ export const loadCollaborateurs = annee => dispatch => {
 };
 
 export const requestDB = (file, body) => dispatch => {
-	console.log(JSON.stringify(body, "\n", 4));
-
 	fetch(`http://localhost:80/Stage-Jexlprod-Backend/Collaborateurs/${file}.php`, {
 		method: "POST",
 		headers: {
@@ -53,8 +50,6 @@ export const requestDB = (file, body) => dispatch => {
 		},
 		body: JSON.stringify(body),
 	});
-
-	console.log("Fetch requestDB");
 };
 
 export const deleteCollaborateur = id => dispatch => {

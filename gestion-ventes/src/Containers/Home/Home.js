@@ -13,7 +13,7 @@ export default function Home() {
 
 	const handleChange = e => {
 		dispatch({
-			type: "SET_ANNEE",
+			type: "SET_ANNEE_COLLABORATEURS",
 			payload: parseInt(e.target.value),
 		});
 	};
@@ -26,7 +26,7 @@ export default function Home() {
 			.then(data => {
 				setAnnees(data);
 				dispatch({
-					type: "SET_ANNEE",
+					type: "SET_ANNEE_COLLABORATEURS",
 					payload: parseInt(data[0]),
 				});
 			});
