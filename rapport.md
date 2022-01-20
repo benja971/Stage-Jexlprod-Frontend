@@ -48,3 +48,10 @@
     -   Résolution de bugs front-end
 
     -   Remaniments de la base de données pour la gestion des rôles de collaborateurs ainsi que pour le calcul du total de ventes
+
+-   19/01/2022 :
+
+    -   Front:
+        -   Popup de validation pour supprimer collarateur (Redux)
+        -   Liste des ventes
+        -   Nouvelle vente

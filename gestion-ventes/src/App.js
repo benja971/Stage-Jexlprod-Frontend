@@ -13,6 +13,7 @@ function App() {
 				<Route path='/collaborateur' element={<CollabForm />} />
 				<Route path='/ventes' element={<Sales />} />
 				<Route path='/ventes/ajouter' element={<SaleForm />} />
+				<Route path='/ventes/modifier' element={<SaleForm />} />
 			</Routes>
 		</div>
 	);

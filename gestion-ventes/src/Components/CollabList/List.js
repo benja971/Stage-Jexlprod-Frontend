@@ -22,7 +22,7 @@ export default function CollabList() {
 	};
 
 	useEffect(() => {
-		dispatch(loadCollaborateurs());
+		dispatch(loadCollaborateurs("2022"));
 	}, []);
 
 	return (
@@ -39,27 +39,29 @@ export default function CollabList() {
 					</tr>
 				</thead>
 				<tbody>
-					{collaborateurs.map(i => (
-						<tr key={uuidv4()}>
-							<td>{i.id}</td>
-							<td>{i.nom}</td>
-							<td>{i.prenom}</td>
-							<td>
-								{i.volume}
-								<Link className='euro' to={"/"}>
-									€
-								</Link>
-							</td>
-							<td id='action'>
-								<Link to='/collaborateur' state={{ collaborateur: i }}>
-									<i className='material-icons edit-icon'>mode_edit</i>
-								</Link>
-								<button onClick={() => handleDelete(i.id)}>
-									<i className='material-icons delete-icon'>delete</i>
-								</button>
-							</td>
-						</tr>
-					))}
+					{collaborateurs.map(i => {
+						return (
+							<tr key={uuidv4()}>
+								<td>{i.id}</td>
+								<td>{i.nom}</td>
+								<td>{i.prenom}</td>
+								<td>
+									{i.volume}
+									<Link className='euro' to={"/"}>
+										€
+									</Link>
+								</td>
+								<td id='action'>
+									<Link to='/collaborateur' state={{ collaborateur: i }}>
+										<i className='material-icons edit-icon'>mode_edit</i>
+									</Link>
+									<button onClick={() => handleDelete(i.id)}>
+										<i className='material-icons delete-icon'>delete</i>
+									</button>
+								</td>
+							</tr>
+						);
+					})}
 				</tbody>
 			</table>
 		</>

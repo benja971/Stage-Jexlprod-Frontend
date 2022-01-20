@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import { requestDB } from "../../redux/ventes/ventesReducer";
 
 export default function SaleForm() {
 	const data = useLocation().state;
@@ -25,7 +26,6 @@ export default function SaleForm() {
 	const validForm = () => {
 		let isValid = true;
 		for (const key in inputsRef.current) {
-			console.log(key);
 			if (inputsRef.current[key].value === "" || inputsRef.current[key].classList.contains("error")) {
 				isValid = false;
 				break;
@@ -45,7 +45,7 @@ export default function SaleForm() {
 		}
 
 		//collaborateur
-		if (name === "collaborateur") {
+		if (name === "collaborateur" || name === "prix") {
 			value = value === "" ? "" : parseInt(value);
 		}
 
@@ -65,7 +65,9 @@ export default function SaleForm() {
 	}, []);
 
 	const handleSubmit = e => {
-		
+		e.preventDefault();
+
+		dispatch(requestDB(isNew ? "NewVente" : "UpdateVente", vente));
 	};
 
 	return (

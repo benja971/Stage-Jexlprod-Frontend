@@ -2,20 +2,31 @@ const INITIAL_STATE = {
 	ventes: [],
 };
 
-export default function ventesReducer(state = INITIAL_STATE, action) {
+export const ventesReducer = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
-		case "ADD_VENTE":
-			break;
+		case "LOAD_VENTES":
+			return { ...state, ventes: action.payload };
 
 		default:
-			break;
+			return state;
 	}
-}
+};
+
+export const loadVentes = () => dispatch => {
+	fetch("http://localhost/Stage-Jexlprod-Backend/ventes/LoadVentes.php", {
+		method: "GET",
+	})
+		.then(response => response.json())
+		.then(data => {
+			dispatch({ type: "LOAD_VENTES", payload: data });
+		});
+};
 
 export const requestDB = (file, body) => dispatch => {
+	console.log(`http://localhost:80/Stage-Jexlprod-Backend/ventes/${file}.php`);
 	console.log(JSON.stringify(body, "\n", 4));
 
-	fetch(`http://localhost:80/Stage-Jexlprod-Backend/Ventes/${file}.php`, {
+	fetch(`http://localhost:80/Stage-Jexlprod-Backend/ventes/${file}.php`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",

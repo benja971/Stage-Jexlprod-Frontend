@@ -1,13 +1,25 @@
 import React from "react";
 import "./Home.css";
 import CollabList from "../../Components/CollabList/List";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Home() {
-	const [annee, setAnnee] = useState(new Date().getFullYear());
+	const [annees, setAnnees] = useState([]);
 
-	const handleChange = e => setAnnee(parseInt(e.target.value));
+	const handleChange = e => setAnnees(parseInt(e.target.value));
+
+	useEffect(() => {
+		fetch("http://localhost/Stage-Jexlprod-Backend/Divers/GetYears.php", {
+			method: "GET",
+		})
+			.then(response => response.json())
+			.then(data => {
+				console.log(data);
+				setAnnees(data);
+			});
+	}, []);
 
 	return (
 		<>
@@ -25,12 +37,14 @@ export default function Home() {
 					<label htmlFor='annee' className='label-annee'>
 						Année:
 					</label>
-					<select className='select-annee' name='annee' value={annee} onChange={handleChange}>
-						<option value='2018'>2018</option>
-						<option value='2019'>2019</option>
-						<option value='2020'>2020</option>
-						<option value='2021'>2021</option>
-						<option value='2022'>2022</option>
+					<select className='select-annee' name='annee' onChange={handleChange}>
+						{annees.map(annee => {
+							return (
+								<option key={uuidv4()} value={annee}>
+									{annee}
+								</option>
+							);
+						})}
 					</select>
 				</div>
 			</div>
