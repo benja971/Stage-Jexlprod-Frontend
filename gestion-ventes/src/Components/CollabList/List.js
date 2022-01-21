@@ -9,7 +9,7 @@ import "./List.css";
 
 export default function CollabList() {
 	const { collaborateurs, annee } = useSelector(state => state.collaborateursReducer);
-	const isPopupVisible = useSelector(state => state.delPopupReducer.isPopupVisible);
+	const { isPopupVisible } = useSelector(state => state.delPopupReducer);
 
 	const dispatch = useDispatch();
 
@@ -37,22 +37,21 @@ export default function CollabList() {
 					</tr>
 				</thead>
 				<tbody>
-					{collaborateurs.map(i => {
+					{collaborateurs.map(collab => {
 						return (
 							<tr key={uuidv4()}>
-								<td>{i.nom}</td>
-								<td>{i.prenom}</td>
+								<td>{collab.nom}</td>
+								<td>{collab.prenom}</td>
 								<td>
-									{parseFloat(i.volume).toFixed(2)}
-									<Link className='euro' to={"/"}>
-										€
+									<Link className='euro' to={"/ventes"} state={{ id: collab.id }}>
+										{parseFloat(collab.volume).toFixed(2)}€
 									</Link>
 								</td>
 								<td id='action'>
-									<Link to='/collaborateur' state={{ collaborateur: i }}>
+									<Link to='/collaborateur' state={{ collaborateur: collab }}>
 										<i className='material-icons edit-icon'>mode_edit</i>
 									</Link>
-									<button onClick={() => handleDelete(i.id, annee)}>
+									<button onClick={() => handleDelete(collab.id, annee)}>
 										<i className='material-icons delete-icon'>delete</i>
 									</button>
 								</td>

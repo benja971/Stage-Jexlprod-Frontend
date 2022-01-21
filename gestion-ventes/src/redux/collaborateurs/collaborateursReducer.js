@@ -55,13 +55,11 @@ export const requestDB = (file, body) => dispatch => {
 export const deleteCollaborateur = (id, annee) => dispatch => {
 	fetch(`http://localhost:80/Stage-Jexlprod-Backend/Collaborateurs/DeleteCollaborateur.php`, {
 		method: "POST",
-		body: JSON.stringify({ id: parseInt(id), annee }),
-	})
-		.then(response => response.json())
-		.then(data => {
-			dispatch({
-				type: "LOAD_COLLABORATEURS",
-				payload: data,
-			});
-		});
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ id: parseInt(id) }),
+	}).then(() => {
+		dispatch(loadCollaborateurs(annee));
+	});
 };

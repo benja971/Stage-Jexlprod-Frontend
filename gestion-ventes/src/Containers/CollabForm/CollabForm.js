@@ -108,8 +108,6 @@ export default function CollabForm() {
 			});
 	}, []);
 
-	console.log(collab);
-
 	return (
 		<>
 			<h1>{isNew ? "Nouveau " : "Modifier un "}Collaborateur</h1>

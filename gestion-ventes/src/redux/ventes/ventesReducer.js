@@ -16,14 +16,14 @@ export const ventesReducer = (state = INITIAL_STATE, action) => {
 	}
 };
 
-export const loadVentes = annee => dispatch => {
+export const loadVentes = (annee, id) => dispatch => {
 	if (annee)
 		fetch("http://localhost/Stage-Jexlprod-Backend/ventes/LoadVentes.php", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({ annee }),
+			body: JSON.stringify({ annee, id }),
 		})
 			.then(response => response.json())
 			.then(data => {
@@ -41,16 +41,12 @@ export const requestDB = (file, body) => dispatch => {
 	});
 };
 
-export const deleteVente = (id, annee) => dispatch => {
+export const deleteVente = id_vente => dispatch => {
 	fetch("http://localhost/Stage-Jexlprod-Backend/ventes/DeleteVente.php", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify({ id, annee }),
-	})
-		.then(response => response.json())
-		.then(data => {
-			dispatch({ type: "LOAD_VENTES", payload: data });
-		});
+		body: JSON.stringify({ id_vente }),
+	});
 };

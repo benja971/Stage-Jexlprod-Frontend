@@ -24,11 +24,15 @@ export default function Home() {
 		})
 			.then(response => response.json())
 			.then(data => {
-				setAnnees(data);
-				dispatch({
-					type: "SET_ANNEE_COLLABORATEURS",
-					payload: parseInt(data[0]),
-				});
+				if (data.length) {
+					setAnnees(data);
+					dispatch({
+						type: "SET_ANNEE_COLLABORATEURS",
+						payload: parseInt(data[0]),
+					});
+				} else {
+					setAnnees([new Date().getFullYear().toString()]);
+				}
 			});
 	}, []);
 

@@ -6,25 +6,27 @@ import { useEffect } from "react";
 import { loadVentes } from "../../redux/ventes/ventesReducer";
 import { Link } from "react-router-dom";
 import DelPopup from "../DelPopup/DelPopup";
+import { useLocation } from "react-router";
 
 export default function SalesList() {
+	const id = useLocation().state.id;
+
 	const { ventes, annee } = useSelector(state => state.ventesReducer);
 	const { isPopupVisible } = useSelector(state => state.delPopupReducer);
 
 	const dispatch = useDispatch();
 
-	const handleDelete = (id, annee) => {
+	const handleDelete = id_vente => {
 		dispatch({
 			type: "SET_VISIBLE",
 			payload: {
-				id,
-				annee,
+				id_vente,
 			},
 		});
 	};
 
 	useEffect(() => {
-		dispatch(loadVentes(annee));
+		dispatch(loadVentes(annee, id));
 	}, [annee]);
 
 	return (
@@ -54,7 +56,7 @@ export default function SalesList() {
 									</Link>
 									<button
 										onClick={() => {
-											handleDelete(vente.id, annee);
+											handleDelete(vente.id);
 										}}
 									>
 										<i className='material-icons delete-icon'>delete</i>
