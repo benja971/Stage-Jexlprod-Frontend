@@ -1,10 +1,11 @@
 import React from "react";
 import "./CollabForm.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { requestDB } from "../../redux/collaborateurs/collaborateursReducer";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 export default function CollabForm() {
 	// eslint-disable-next-line no-extend-native
@@ -22,6 +23,7 @@ export default function CollabForm() {
 	const inputsRef = useRef([]);
 	const errorsRef = useRef([]);
 
+	const [roles, setRoles] = useState([]);
 	const [collab, setCollab] = useState(
 		isNew
 			? {
@@ -96,6 +98,18 @@ export default function CollabForm() {
 		window.location.href = "/";
 	};
 
+	useEffect(() => {
+		fetch("http://localhost/Stage-Jexlprod-Backend/Collaborateurs/GetRoles.php", {
+			method: "GET",
+		})
+			.then(response => response.json())
+			.then(data => {
+				setRoles(data);
+			});
+	}, []);
+
+	console.log(collab);
+
 	return (
 		<>
 			<h1>{isNew ? "Nouveau " : "Modifier un "}Collaborateur</h1>
@@ -129,8 +143,13 @@ export default function CollabForm() {
 
 				<label htmlFor='remunération'>Grille de rémunération</label>
 				<select ref={addInputToRef} name='statut' value={collab.statut} onChange={handleChange}>
-					<option value='0'>Collaborateur</option>
-					<option value='1'>Super collaborateur</option>
+					{roles.map(role => {
+						return (
+							<option key={uuidv4()} value={role.id}>
+								{role.nom}
+							</option>
+						);
+					})}
 				</select>
 
 				<div className='btn-container'>
