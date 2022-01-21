@@ -52,10 +52,10 @@ export const requestDB = (file, body) => dispatch => {
 	});
 };
 
-export const deleteCollaborateur = id => dispatch => {
+export const deleteCollaborateur = (id, annee) => dispatch => {
 	fetch(`http://localhost:80/Stage-Jexlprod-Backend/Collaborateurs/DeleteCollaborateur.php`, {
 		method: "POST",
-		body: JSON.stringify(id),
+		body: JSON.stringify({ id: parseInt(id), annee }),
 	})
 		.then(response => response.json())
 		.then(data => {

@@ -129,8 +129,8 @@ export default function CollabForm() {
 
 				<label htmlFor='remunération'>Grille de rémunération</label>
 				<select ref={addInputToRef} name='statut' value={collab.statut} onChange={handleChange}>
-					<option value='1'>Collaborateur</option>
-					<option value='2'>Super collaborateur</option>
+					<option value='0'>Collaborateur</option>
+					<option value='1'>Super collaborateur</option>
 				</select>
 
 				<div className='btn-container'>

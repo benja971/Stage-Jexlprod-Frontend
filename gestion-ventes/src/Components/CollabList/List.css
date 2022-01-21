@@ -36,6 +36,13 @@ tbody tr {
 	padding-top: 10px;
 }
 
+tbody tr:nth-child(odd) {
+	background-color: #535353;
+}
+tbody tr:nth-child(even) {
+	background-color: #353535;
+}
+
 tbody tr td {
 	width: 20%;
 	border-radius: 5px;
@@ -43,6 +50,7 @@ tbody tr td {
 	border: none;
 	user-select: none;
 	text-align: center;
+	padding-bottom: 10px;
 }
 
 tbody tr #action {

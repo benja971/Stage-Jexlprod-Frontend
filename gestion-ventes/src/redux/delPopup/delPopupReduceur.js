@@ -1,6 +1,7 @@
 const INTITIAL_STATE = {
 	isPopupVisible: false,
 	id: null,
+	annee: null,
 };
 
 export const delPopupReducer = (state = INTITIAL_STATE, action) => {
@@ -9,14 +10,14 @@ export const delPopupReducer = (state = INTITIAL_STATE, action) => {
 			return {
 				...state,
 				isPopupVisible: true,
-				id: action.payload,
+				id: action.payload.id,
+				annee: action.payload.annee,
 			};
 
 		case "SET_INVISIBLE":
 			return {
 				...state,
 				isPopupVisible: false,
-				id: action.payload,
 			};
 
 		default:

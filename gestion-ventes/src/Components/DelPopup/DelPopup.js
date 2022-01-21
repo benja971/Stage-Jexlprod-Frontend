@@ -1,34 +1,33 @@
 import React from "react";
 import "./DelPopup.css";
 import { deleteCollaborateur } from "../../redux/collaborateurs/collaborateursReducer";
+import { deleteVente } from "../../redux/ventes/ventesReducer";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function DelPopup() {
+export default function DelPopup(props) {
 	const dispatch = useDispatch();
 
 	const id = useSelector(state => state.delPopupReducer.id);
-
-	console.log(id);
+	const { annee } = useSelector(state => state.collaborateursReducer);
 
 	const handleDelete = id => {
-		dispatch(deleteCollaborateur(id));
+		props.location === "Collaborateurs" ? dispatch(deleteCollaborateur(id, annee)) : dispatch(deleteVente(id, annee));
+
 		dispatch({
 			type: "SET_INVISIBLE",
-			payload: null,
 		});
 	};
 
 	const handleCancel = () => {
 		dispatch({
 			type: "SET_INVISIBLE",
-			payload: null,
 		});
 	};
 
 	return (
 		<div className='del-popup'>
 			<div className='del-popup-content'>
-				<h3>Voulez-vous vraiment supprimer ce collaborateur ?</h3>
+				<h3>Voulez-vous vraiment supprimer {props.location === "Collaborateurs" ? "ce collaborateur " : "cette vente "} ?</h3>
 				<div className='del-popup-buttons'>
 					<button className='del-popup-button yes' onClick={() => handleDelete(id)}>
 						Oui

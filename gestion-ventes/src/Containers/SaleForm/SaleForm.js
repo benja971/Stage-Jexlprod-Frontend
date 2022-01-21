@@ -11,7 +11,7 @@ export default function SaleForm() {
 	const isNew = data ? false : true;
 
 	const [collabs, setCollabs] = useState([]);
-	const [vente, setVente] = useState(isNew ? {} : { ...data.vente });
+	const [vente, setVente] = useState(isNew ? {} : data);
 
 	const inputsRef = useRef([]);
 	const zip_error = useRef(null);
@@ -45,16 +45,20 @@ export default function SaleForm() {
 		}
 
 		//collaborateur
-		if (name === "collaborateur" || name === "prix") {
+		else if (name === "collaborateur") {
+			console.log(value);
 			value = value === "" ? "" : parseInt(value);
 		}
+
+		//prix
+		else if (name === "prix") value = value === "" ? "" : parseFloat(value);
 
 		setVente({ ...vente, [name]: value });
 		validForm();
 	};
 
 	useEffect(() => {
-		fetch("http://localhost/Stage-Jexlprod-Backend/Collaborateurs/LoadCollaborateurs.php", {
+		fetch("http://localhost:80/Stage-Jexlprod-Backend/Collaborateurs/GetCollaborateursNames.php", {
 			method: "GET",
 		})
 			.then(response => response.json())
@@ -68,40 +72,42 @@ export default function SaleForm() {
 		e.preventDefault();
 
 		dispatch(requestDB(isNew ? "NewVente" : "UpdateVente", vente));
+
+		window.location.href = "/ventes";
 	};
 
 	return (
 		<>
-			<h1>Nouvelle vente</h1>
+			<h1>{isNew ? "Nouvelle " : "Modifier la "} vente</h1>
 			<form onSubmit={handleSubmit}>
 				<input type='hidden' name='id' onChange={handleChange} />
 
 				<label htmlFor='adresse'>Libéllé</label>
-				<input ref={addToInputsRef} type='text' name='adresse' placeholder='Libéllé' onChange={handleChange} />
+				<input ref={addToInputsRef} type='text' name='adresse' placeholder='Libéllé' onChange={handleChange} value={vente.adresse} />
 
 				<label htmlFor='ville'>Ville</label>
-				<input ref={addToInputsRef} type='text' name='ville' placeholder='Ville' onChange={handleChange} />
+				<input ref={addToInputsRef} type='text' name='ville' placeholder='Ville' onChange={handleChange} value={vente.ville} />
 
 				<label htmlFor='code_postal'>Code postal</label>
-				<input ref={addToInputsRef} type='number' pattern='^\s*?\d{5}(?:[-\s]\d{4})?\s*?$' name='code_postal' placeholder='Code postal' onChange={handleChange} />
+				<input ref={addToInputsRef} type='number' pattern='^\s*?\d{5}(?:[-\s]\d{4})?\s*?$' name='code_postal' placeholder='Code postal' onChange={handleChange} value={vente.code_postal} />
 				<p ref={zip_error} className='invisible'>
 					Le code postal est invallide
 				</p>
 
 				<label htmlFor='date'>Date</label>
-				<input ref={addToInputsRef} type='date' name='date' onChange={handleChange} />
+				<input ref={addToInputsRef} type='date' name='date' onChange={handleChange} value={vente.date} />
 
 				<label htmlFor='prix'>Prix</label>
-				<input ref={addToInputsRef} type='number' min={0} step={0.01} name='prix' placeholder='Prix' onChange={handleChange} />
+				<input ref={addToInputsRef} type='number' min={0} step={0.01} name='prix' placeholder='Prix' onChange={handleChange} value={vente.prix} />
 
-				<label htmlFor='collaborateur' onChange={handleChange}>
+				<label htmlFor='collaborateur' onChange={handleChange} value={vente.collaborateur}>
 					Collaborateur
 				</label>
 				<select ref={addToInputsRef} name='collaborateur' onChange={handleChange} value={vente.collaborateur}>
 					{collabs.map(collab => {
 						return (
 							<option key={uuidv4()} value={collab.id}>
-								{collab.nom + " " + collab.prenom}
+								{collab.nom}
 							</option>
 						);
 					})}

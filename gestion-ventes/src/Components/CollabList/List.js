@@ -13,26 +13,23 @@ export default function CollabList() {
 
 	const dispatch = useDispatch();
 
-	const handleDelete = id => {
+	const handleDelete = (id, annee) => {
 		dispatch({
 			type: "SET_VISIBLE",
-			payload: id,
+			payload: { id, annee },
 		});
 	};
 
-	console.log(collaborateurs);
-
 	useEffect(() => {
 		dispatch(loadCollaborateurs(annee));
-	}, [annee]);
+	}, [annee, dispatch]);
 
 	return (
 		<>
-			{isPopupVisible && <DelPopup />}
+			{isPopupVisible && <DelPopup location='Collaborateurs' />}
 			<table>
 				<thead>
 					<tr>
-						<th>Id</th>
 						<th>Nom</th>
 						<th>Prénom</th>
 						<th>Volume</th>
@@ -43,11 +40,10 @@ export default function CollabList() {
 					{collaborateurs.map(i => {
 						return (
 							<tr key={uuidv4()}>
-								<td>{i.id}</td>
 								<td>{i.nom}</td>
 								<td>{i.prenom}</td>
 								<td>
-									{i.volume || 0}
+									{parseFloat(i.volume).toFixed(2)}
 									<Link className='euro' to={"/"}>
 										€
 									</Link>
@@ -56,7 +52,7 @@ export default function CollabList() {
 									<Link to='/collaborateur' state={{ collaborateur: i }}>
 										<i className='material-icons edit-icon'>mode_edit</i>
 									</Link>
-									<button onClick={() => handleDelete(i.id)}>
+									<button onClick={() => handleDelete(i.id, annee)}>
 										<i className='material-icons delete-icon'>delete</i>
 									</button>
 								</td>
