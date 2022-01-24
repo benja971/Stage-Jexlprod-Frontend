@@ -9,7 +9,14 @@ import DelPopup from "../DelPopup/DelPopup";
 import { useLocation } from "react-router";
 
 export default function SalesList() {
-	const id = useLocation().state.id;
+	let id;
+	try {
+		// eslint-disable-next-line react-hooks/rules-of-hooks
+		id = useLocation().state.id;
+	} catch (error) {
+		// eslint-disable-next-line react-hooks/rules-of-hooks
+		id = useSelector(state => state.ventesReducer);
+	}
 
 	const { ventes, annee } = useSelector(state => state.ventesReducer);
 	const { isPopupVisible } = useSelector(state => state.delPopupReducer);
@@ -18,16 +25,20 @@ export default function SalesList() {
 
 	const handleDelete = id_vente => {
 		dispatch({
-			type: "SET_VISIBLE",
+			type: "SET_VISIBLE_FROM_VENTE",
 			payload: {
+				isPopupVisible: true,
+				id_collaborateur: id,
 				id_vente,
+				annee,
 			},
 		});
 	};
 
 	useEffect(() => {
-		dispatch(loadVentes(annee, id));
-	}, [annee]);
+		if (annee) dispatch(loadVentes(annee, id));
+		console.log(id);
+	}, [annee, id, dispatch]);
 
 	return (
 		<div>

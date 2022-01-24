@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
 	ventes: [],
 	annee: null,
+	id_current_collaborateur: null,
 };
 
 export const ventesReducer = (state = INITIAL_STATE, action) => {
@@ -10,6 +11,9 @@ export const ventesReducer = (state = INITIAL_STATE, action) => {
 
 		case "SET_ANNEE_VENTES":
 			return { ...state, annee: action.payload };
+
+		case "SET_ID_CURRENT":
+			return { ...state, id_current_collaborateur: action.payload };
 
 		default:
 			return state;
@@ -23,7 +27,7 @@ export const loadVentes = (annee, id) => dispatch => {
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({ annee, id }),
+			body: JSON.stringify({ annee, id_collaborateur: id }),
 		})
 			.then(response => response.json())
 			.then(data => {
@@ -32,21 +36,27 @@ export const loadVentes = (annee, id) => dispatch => {
 };
 
 export const requestDB = (file, body) => dispatch => {
+	const { collaborateur, date } = body;
+	const year = date.split("-")[0];
+
 	fetch(`http://localhost:80/Stage-Jexlprod-Backend/ventes/${file}.php`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
 		},
 		body: JSON.stringify(body),
-	});
+	}).then(dispatch(loadVentes(year, collaborateur)));
 };
 
-export const deleteVente = id_vente => dispatch => {
+export const deleteVente = (id_collaborateur, annee, id_vente) => dispatch => {
+	console.log(id_vente, annee, id_collaborateur);
 	fetch("http://localhost/Stage-Jexlprod-Backend/ventes/DeleteVente.php", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
 		},
 		body: JSON.stringify({ id_vente }),
+	}).then(() => {
+		dispatch(loadVentes(annee, id_collaborateur));
 	});
 };

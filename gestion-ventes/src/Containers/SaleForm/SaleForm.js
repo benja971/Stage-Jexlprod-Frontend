@@ -1,7 +1,6 @@
-import React from "react";
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { requestDB } from "../../redux/ventes/ventesReducer";
@@ -11,13 +10,26 @@ export default function SaleForm() {
 	const isNew = data ? false : true;
 
 	const [collabs, setCollabs] = useState([]);
-	const [vente, setVente] = useState(isNew ? {} : data);
+	const [vente, setVente] = useState(
+		isNew
+			? {
+					adresse: "",
+					ville: "",
+					code_postal: "",
+					date: "",
+					prix: 0,
+					collaborateur: collabs[0],
+			  }
+			: data,
+	);
 
+	const formRef = useRef(null);
 	const inputsRef = useRef([]);
 	const zip_error = useRef(null);
 	const [isFormValid, setIsFormValid] = useState(isNew ? false : true);
 
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const addToInputsRef = element => {
 		if (element !== null && !inputsRef.current.includes(element)) inputsRef.current[element.name] = element;
@@ -46,7 +58,6 @@ export default function SaleForm() {
 
 		//collaborateur
 		else if (name === "collaborateur") {
-			console.log(value);
 			value = value === "" ? "" : parseInt(value);
 		}
 
@@ -64,22 +75,25 @@ export default function SaleForm() {
 			.then(response => response.json())
 			.then(data => {
 				setCollabs(data);
-				setVente({ ...vente, collaborateur: parseInt(data[0].id) });
+				isNew && setVente({ ...vente, collaborateur: parseInt(data[0].id) });
 			});
+		console.table(vente);
 	}, []);
 
 	const handleSubmit = e => {
 		e.preventDefault();
 
+		dispatch({ type: "SET_ID_CURRENT", payload: vente.collaborateur });
+
 		dispatch(requestDB(isNew ? "NewVente" : "UpdateVente", vente));
 
-		window.location.href = "/ventes";
+		navigate("/ventes", { state: { id: vente.collaborateur } });
 	};
 
 	return (
 		<>
 			<h1>{isNew ? "Nouvelle " : "Modifier la "} vente</h1>
-			<form onSubmit={handleSubmit}>
+			<form ref={formRef} onSubmit={handleSubmit}>
 				<input type='hidden' name='id' onChange={handleChange} />
 
 				<label htmlFor='adresse'>Libéllé</label>
@@ -113,9 +127,11 @@ export default function SaleForm() {
 					})}
 				</select>
 
-				<div className='btn-container'>
-					<Link to={"/ventes"}>Annuler</Link>
-					<button {...(!isFormValid && { disabled: true })} className={isFormValid ? "" : "disabled"}>
+				<div className='btn-container '>
+					<Link to={"/ventes"} state={{ id: vente.collaborateur }} className='cancel'>
+						Annuler
+					</Link>
+					<button type='submit' disabled={!isFormValid} className={isFormValid ? "valid" : "valid disabled"}>
 						Valider
 					</button>
 				</div>

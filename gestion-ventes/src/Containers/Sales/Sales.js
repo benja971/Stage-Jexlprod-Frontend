@@ -1,10 +1,10 @@
 import React from "react";
 import "./Sales.css";
 import SalesList from "../../Components/SalesList/SalesList";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Sales() {
 	const dispatch = useDispatch();
@@ -18,7 +18,7 @@ export default function Sales() {
 		});
 	};
 
-	useEffect(() => {
+	!annees.length &&
 		fetch("http://localhost/Stage-Jexlprod-Backend/Divers/GetYears.php", {
 			method: "GET",
 		})
@@ -30,20 +30,14 @@ export default function Sales() {
 					payload: parseInt(data[0]),
 				});
 			});
-	}, []);
 
 	return (
 		<>
 			<div className='header'>
-				<Link
-					className='btn-add'
-					to={{
-						pathname: "./ajouter",
-						state: {},
-					}}
-				>
-					Ajouter une vente
+				<Link to={"/"} className='btn-add'>
+					Retour
 				</Link>
+
 				<div className='annee-container'>
 					<label htmlFor='annee' className='label-annee'>
 						Année:
