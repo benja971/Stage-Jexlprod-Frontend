@@ -49,15 +49,6 @@ export default function Home() {
 					Ajouter un collaborateur
 				</Link>
 
-				<Link
-					className='btn-add'
-					to={{
-						pathname: "/ventes/ajouter",
-						state: {},
-					}}
-				>
-					Ajouter une vente
-				</Link>
 				<div className='annee-container'>
 					<label htmlFor='annee' className='label-annee'>
 						Année:

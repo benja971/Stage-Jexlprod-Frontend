@@ -9,6 +9,7 @@ import { useLocation } from "react-router";
 
 export default function Sales() {
 	const { id, annee } = useLocation().state;
+	console.log(useLocation().state);
 
 	const anneeaffichage = useSelector(state => state.ventesReducer.annee);
 
@@ -48,6 +49,10 @@ export default function Sales() {
 			<div className='header'>
 				<Link to={"/"} className='btn-add'>
 					Retour
+				</Link>
+
+				<Link className='btn-add' to={"/ventes/ajouter"} state={{ id, annee }}>
+					Ajouter une vente
 				</Link>
 
 				<div className='annee-container'>

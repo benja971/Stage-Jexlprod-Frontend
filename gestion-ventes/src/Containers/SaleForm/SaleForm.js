@@ -7,6 +7,8 @@ import { requestDB } from "../../redux/ventes/ventesReducer";
 
 export default function SaleForm() {
 	const data = useLocation().state;
+	const { id, annee } = data;
+
 	const isNew = data ? false : true;
 
 	const [collabs, setCollabs] = useState([]);
@@ -18,7 +20,7 @@ export default function SaleForm() {
 					code_postal: "",
 					date: "",
 					prix: 0,
-					collaborateur: collabs[0],
+					collaborateur: id,
 			  }
 			: data,
 	);
@@ -77,7 +79,6 @@ export default function SaleForm() {
 				setCollabs(data);
 				isNew && setVente({ ...vente, collaborateur: parseInt(data[0].id) });
 			});
-		console.table(vente);
 	}, []);
 
 	const handleSubmit = e => {
@@ -87,7 +88,7 @@ export default function SaleForm() {
 
 		dispatch(requestDB(isNew ? "NewVente" : "UpdateVente", vente));
 
-		navigate("/ventes", { state: { id: vente.collaborateur } });
+		navigate("/ventes", { state: { id: vente.collaborateur, annee: data.annee } });
 	};
 
 	return (
@@ -128,7 +129,7 @@ export default function SaleForm() {
 				</select>
 
 				<div className='btn-container '>
-					<Link to={"/ventes"} state={{ id: vente.collaborateur }} className='cancel'>
+					<Link to={"/ventes"} state={data} className='cancel'>
 						Annuler
 					</Link>
 					<button type='submit' disabled={!isFormValid} className={isFormValid ? "valid" : "valid disabled"}>
