@@ -93,7 +93,7 @@ export default function SaleForm() {
 	return (
 		<>
 			<h1>{isNew ? "Nouvelle " : "Modifier la "} vente</h1>
-			<form ref={formRef} onSubmit={handleSubmit}>
+			<form className='form-app' ref={formRef} onSubmit={handleSubmit}>
 				<input type='hidden' name='id' onChange={handleChange} />
 
 				<label htmlFor='adresse'>Libéllé</label>

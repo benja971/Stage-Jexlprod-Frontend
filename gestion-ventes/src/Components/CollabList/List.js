@@ -43,7 +43,7 @@ export default function CollabList() {
 								<td>{collab.nom}</td>
 								<td>{collab.prenom}</td>
 								<td>
-									<Link className='euro' to={"/ventes"} state={{ id: collab.id }}>
+									<Link className='euro' to={"/ventes"} state={{ id: collab.id, annee }}>
 										{parseFloat(collab.volume).toFixed(2)}€
 									</Link>
 								</td>

@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Sales.css";
 import SalesList from "../../Components/SalesList/SalesList";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
 
 export default function Sales() {
+	const { id, annee } = useLocation().state;
+
+	const anneeaffichage = useSelector(state => state.ventesReducer.annee);
+
 	const dispatch = useDispatch();
 
-	const [annees, setAnnees] = useState([]);
+	const [years, setYears] = useState([]);
 
 	const handleChange = e => {
 		dispatch({
@@ -18,18 +23,25 @@ export default function Sales() {
 		});
 	};
 
-	!annees.length &&
-		fetch("http://localhost/Stage-Jexlprod-Backend/Divers/GetYears.php", {
-			method: "GET",
+	!years.length &&
+		fetch("http://localhost/Stage-Jexlprod-Backend/Divers/GetYearsWithId.php", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ id }),
 		})
 			.then(response => response.json())
 			.then(data => {
-				setAnnees(data);
-				dispatch({
-					type: "SET_ANNEE_VENTES",
-					payload: parseInt(data[0]),
-				});
+				setYears(data);
 			});
+
+	useEffect(() => {
+		dispatch({
+			type: "SET_ANNEE_VENTES",
+			payload: parseInt(annee),
+		});
+	}, []);
 
 	return (
 		<>
@@ -42,8 +54,8 @@ export default function Sales() {
 					<label htmlFor='annee' className='label-annee'>
 						Année:
 					</label>
-					<select className='select-annee' name='annee' onChange={handleChange}>
-						{annees.map(annee => {
+					<select className='select-annee' name='annee' onChange={handleChange} value={anneeaffichage !== null && anneeaffichage}>
+						{years.map(annee => {
 							return (
 								<option key={uuidv4()} value={annee}>
 									{annee}

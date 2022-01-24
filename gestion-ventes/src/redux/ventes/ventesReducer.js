@@ -49,7 +49,6 @@ export const requestDB = (file, body) => dispatch => {
 };
 
 export const deleteVente = (id_collaborateur, annee, id_vente) => dispatch => {
-	console.log(id_vente, annee, id_collaborateur);
 	fetch("http://localhost/Stage-Jexlprod-Backend/ventes/DeleteVente.php", {
 		method: "POST",
 		headers: {

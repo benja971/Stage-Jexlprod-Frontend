@@ -37,7 +37,6 @@ export default function SalesList() {
 
 	useEffect(() => {
 		if (annee) dispatch(loadVentes(annee, id));
-		console.log(id);
 	}, [annee, id, dispatch]);
 
 	return (

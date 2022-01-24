@@ -19,7 +19,7 @@ export default function Home() {
 	};
 
 	useEffect(() => {
-		fetch("http://localhost/Stage-Jexlprod-Backend/Divers/GetYears.php", {
+		fetch("http://localhost/Stage-Jexlprod-Backend/Divers/GetAllYears.php", {
 			method: "GET",
 		})
 			.then(response => response.json())

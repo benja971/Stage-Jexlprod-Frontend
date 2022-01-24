@@ -5,7 +5,7 @@ h1 {
 	user-select: none;
 }
 
-form {
+form.form-app {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -16,13 +16,13 @@ form {
 	color: #f4f4f4;
 }
 
-form label {
+form.form-app label {
 	margin-bottom: 1%;
 	margin-top: 10px;
 	user-select: none;
 }
 
-div.btn-container {
+form.form-app div.btn-container {
 	display: flex;
 	width: 250px;
 	justify-content: space-evenly;
@@ -32,7 +32,7 @@ div.btn-container {
 	font-weight: 600;
 }
 
-div.btn-container a {
+form.form-app div.btn-container a {
 	text-decoration: none;
 	color: black;
 	background-color: #f4f4f4;
@@ -47,16 +47,16 @@ div.btn-container a {
 	padding-top: 2px;
 }
 
-div.btn-container a.cancel:hover {
+form.form-app div.btn-container a.cancel:hover {
 	cursor: pointer;
 	box-shadow: -2px 2px 7px red;
 }
 
-div.btn-container a:active {
+form.form-app div.btn-container a:active {
 	box-shadow: none;
 }
 
-form div.btn-container button {
+form.form-app div.btn-container button {
 	margin-top: 3%;
 	width: 100px;
 	height: 25px;
@@ -69,34 +69,34 @@ form div.btn-container button {
 	font-weight: 600;
 }
 
-.valid:hover {
+form.form-app .valid:hover {
 	cursor: pointer;
 	box-shadow: 2px 2px 7px lightgreen;
 }
 
-form div.btn-container button:active {
+form.form-app div.btn-container button:active {
 	box-shadow: none;
 }
 
-form select {
+form.form-app select {
 	cursor: pointer;
 }
 
-form input {
+form.form-app input {
 	padding-left: 5px;
 	color: black;
 }
 
-form input:-webkit-autofill,
-form input:-webkit-autofill:hover,
-form input:-webkit-autofill:focus,
-form input:-webkit-autofill:active {
+form.form-app input:-webkit-autofill,
+form.form-app input:-webkit-autofill:hover,
+form.form-app input:-webkit-autofill:focus,
+form.form-app input:-webkit-autofill:active {
 	-webkit-box-shadow: 0 0 0 30px white inset;
 	-webkit-text-fill-color: black;
 }
 
-form select,
-form input {
+form.form-app select,
+form.form-app input {
 	width: 225px;
 	height: 25px;
 	border-radius: 5px;
@@ -105,10 +105,10 @@ form input {
 	box-shadow: 2px 2px 5px grey;
 }
 
-form select:hover,
-form input:hover,
-form button:hover,
-form a:hover {
+form.form-app select:hover,
+form.form-app input:hover,
+form.form-app button:hover,
+form.form-app a:hover {
 	transform: scale(1.02);
 }
 

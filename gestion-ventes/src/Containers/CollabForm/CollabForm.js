@@ -111,7 +111,7 @@ export default function CollabForm() {
 	return (
 		<>
 			<h1>{isNew ? "Nouveau " : "Modifier un "}Collaborateur</h1>
-			<form onSubmit={handleSubmit}>
+			<form className='form-app' onSubmit={handleSubmit}>
 				<input type='hidden' name='id' value={collab.id} />
 
 				<label htmlFor='civilite'>Civilité</label>
