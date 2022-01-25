@@ -8,10 +8,10 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 
 export default function Sales() {
-	// console.log(useLocation().state);
-	const { id, annee } = useLocation().state;
+	const isLogged = useSelector(state => state.loginReducer.isLogged);
+	if (!isLogged) window.location.href = "/";
 
-	// console.log("Sales", id, annee);
+	const { id, annee } = useLocation().state;
 
 	const anneeaffichage = useSelector(state => state.ventesReducer.annee);
 

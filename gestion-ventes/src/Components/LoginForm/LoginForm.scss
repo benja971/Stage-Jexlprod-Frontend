@@ -54,6 +54,17 @@
 					border-bottom-left-radius: 10px;
 					padding-left: 15px;
 
+					&:-webkit-autofill,
+					&:-webkit-autofill:hover,
+					&:-webkit-autofill:focus,
+					&:-webkit-autofill:active {
+						-webkit-box-shadow: 0 0 0 30px #dddddd inset;
+					}
+
+					&:focus {
+						border-bottom: 1px solid #000;
+					}
+
 					&:first-child {
 						margin-bottom: 15px;
 					}
@@ -67,7 +78,7 @@
 					margin-left: 55%;
 
 					&:hover {
-						color: royalblue;
+						color: #f85a79;
 					}
 				}
 
@@ -84,7 +95,7 @@
 				cursor: pointer;
 				display: block;
 				margin: auto;
-				margin-top: 15px;
+				margin-top: 35px;
 				background: linear-gradient(to left, #ff8458, #f8577d);
 				border: 0;
 				outline: none;

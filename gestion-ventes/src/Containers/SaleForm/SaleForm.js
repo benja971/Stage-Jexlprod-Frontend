@@ -1,11 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { requestDB } from "../../redux/ventes/ventesReducer";
 
 export default function SaleForm() {
+	const isLogged = useSelector(state => state.loginReducer.isLogged);
+	if (!isLogged) window.location.href = "/";
+
 	const data = useLocation().state;
 	const nouveau = data.nouveau;
 
@@ -22,8 +25,6 @@ export default function SaleForm() {
 			  }
 			: data.vente,
 	);
-
-	console.log("SaleForm", data);
 
 	const formRef = useRef(null);
 	const inputsRef = useRef([]);

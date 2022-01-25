@@ -4,9 +4,12 @@ import CollabList from "../../Components/CollabList/List";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Home() {
+	const isLogged = useSelector(state => state.loginReducer.isLogged);
+	if (!isLogged) window.location.href = "/";
+
 	const [annees, setAnnees] = useState([]);
 
 	const dispatch = useDispatch();
@@ -34,10 +37,10 @@ export default function Home() {
 					setAnnees([new Date().getFullYear().toString()]);
 				}
 			});
-	}, []);
+	}, [dispatch]);
 
 	return (
-		<>
+		<div onLoad={e => e.preventDefault()}>
 			<div className='header'>
 				<Link
 					className='btn-add'
@@ -64,6 +67,6 @@ export default function Home() {
 				</div>
 			</div>
 			<CollabList />
-		</>
+		</div>
 	);
 }

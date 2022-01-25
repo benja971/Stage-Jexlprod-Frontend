@@ -1,13 +1,16 @@
 import React from "react";
 import "./CollabForm.css";
 import { useState, useRef, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { requestDB } from "../../redux/collaborateurs/collaborateursReducer";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 export default function CollabForm() {
+	const isLogged = useSelector(state => state.loginReducer.isLogged);
+	if (!isLogged) window.location.href = "/";
+
 	// eslint-disable-next-line no-extend-native
 	String.prototype.toTitleCase = function () {
 		return this.split(" ")

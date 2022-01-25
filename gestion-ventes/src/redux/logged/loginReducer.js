@@ -4,13 +4,25 @@ const INITIAL_STATE = {
 
 export function loginReducer(state = INITIAL_STATE, action) {
 	switch (action.type) {
-		case "LOGIN_SUCCESS":
-			return { ...state, isLogged: true };
-		case "LOGIN_FAIL":
-			return { ...state, isLogged: false };
+		case "LOGIN":
+			return {
+				...state,
+				isLogged: true,
+			};
+
 		case "LOGOUT":
-			return { ...state, isLogged: false };
+			return {
+				...state,
+				isLogged: false,
+			};
+
 		default:
 			return state;
 	}
 }
+
+export const logIn = () => dispatch => {
+	dispatch({
+		type: "LOGIN",
+	});
+};
