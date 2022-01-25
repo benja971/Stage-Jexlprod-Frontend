@@ -21,7 +21,7 @@ export default function CollabList() {
 	};
 
 	useEffect(() => {
-		dispatch(loadCollaborateurs(annee));
+		annee && dispatch(loadCollaborateurs(annee));
 	}, [annee, dispatch]);
 
 	return (
@@ -32,7 +32,8 @@ export default function CollabList() {
 					<tr>
 						<th>Nom</th>
 						<th>Prénom</th>
-						<th>Volume</th>
+						<th>Volume HT</th>
+						<th>Volume TTC</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
@@ -43,12 +44,17 @@ export default function CollabList() {
 								<td>{collab.nom}</td>
 								<td>{collab.prenom}</td>
 								<td>
-									<Link className='euro' to={"/ventes"} state={{ id: collab.id, annee }}>
+									<Link className='euro' to={`/ventes#${collab.nom}-${collab.prenom}`} state={{ id: collab.id, annee }}>
 										{parseFloat(collab.volume).toFixed(2)}€
 									</Link>
 								</td>
+								<td>
+									<Link className='euro' to={`/ventes#${collab.nom}-${collab.prenom}`} state={{ id: collab.id, annee }}>
+										{parseFloat(collab.volume).toFixed(2) * 0.8}€
+									</Link>
+								</td>
 								<td id='action'>
-									<Link to='/collaborateur' state={{ collaborateur: collab }}>
+									<Link to={`/collaborateurs/collaborateur#${collab.nom}-${collab.prenom}`} state={{ collaborateur: collab }}>
 										<i className='material-icons edit-icon'>mode_edit</i>
 									</Link>
 									<button onClick={() => handleDelete(collab.id, annee)}>

@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
 	collaborateurs: [],
-	annee: new Date().getFullYear(),
+	annee: null,
 };
 
 export const collaborateursReducer = (state = INITIAL_STATE, action) => {
@@ -38,7 +38,7 @@ export const loadCollaborateurs = annee => dispatch => {
 			});
 		})
 		.catch(err => {
-			console.log("liste : ", err.message);
+			console.log("Collaborateurs liste : ", err.message);
 		});
 };
 

@@ -7,28 +7,28 @@ import { requestDB } from "../../redux/ventes/ventesReducer";
 
 export default function SaleForm() {
 	const data = useLocation().state;
-	const { id, annee } = data;
-
-	const isNew = data ? false : true;
+	const nouveau = data.nouveau;
 
 	const [collabs, setCollabs] = useState([]);
 	const [vente, setVente] = useState(
-		isNew
+		nouveau
 			? {
 					adresse: "",
 					ville: "",
 					code_postal: "",
 					date: "",
 					prix: 0,
-					collaborateur: id,
+					collaborateur: "",
 			  }
-			: data,
+			: data.vente,
 	);
+
+	console.log("SaleForm", data);
 
 	const formRef = useRef(null);
 	const inputsRef = useRef([]);
 	const zip_error = useRef(null);
-	const [isFormValid, setIsFormValid] = useState(isNew ? false : true);
+	const [isFormValid, setIsFormValid] = useState(nouveau ? false : true);
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -77,7 +77,7 @@ export default function SaleForm() {
 			.then(response => response.json())
 			.then(data => {
 				setCollabs(data);
-				isNew && setVente({ ...vente, collaborateur: parseInt(data[0].id) });
+				nouveau && setVente({ ...vente, collaborateur: nouveau ? data.id : parseInt(data.vente.collaborateur) });
 			});
 	}, []);
 
@@ -86,14 +86,14 @@ export default function SaleForm() {
 
 		dispatch({ type: "SET_ID_CURRENT", payload: vente.collaborateur });
 
-		dispatch(requestDB(isNew ? "NewVente" : "UpdateVente", vente));
+		dispatch(requestDB(nouveau ? "NewVente" : "UpdateVente", vente));
 
-		navigate("/ventes", { state: { id: vente.collaborateur, annee: data.annee } });
+		navigate("/ventes", { state: { id: nouveau ? data.id : parseInt(vente.collaborateur), annee: nouveau ? data.annee : parseInt(data.vente.date.substring(0, 4)) } });
 	};
 
 	return (
 		<>
-			<h1>{isNew ? "Nouvelle " : "Modifier la "} vente</h1>
+			<h1>{nouveau ? "Nouvelle " : "Modifier la "} vente</h1>
 			<form className='form-app' ref={formRef} onSubmit={handleSubmit}>
 				<input type='hidden' name='id' onChange={handleChange} />
 
@@ -112,7 +112,7 @@ export default function SaleForm() {
 				<label htmlFor='date'>Date</label>
 				<input ref={addToInputsRef} type='date' name='date' onChange={handleChange} value={vente.date} />
 
-				<label htmlFor='prix'>Prix</label>
+				<label htmlFor='prix'>Prix de la commission</label>
 				<input ref={addToInputsRef} type='number' min={0} step={0.01} name='prix' placeholder='Prix' onChange={handleChange} value={vente.prix} />
 
 				<label htmlFor='collaborateur' onChange={handleChange} value={vente.collaborateur}>
@@ -129,7 +129,7 @@ export default function SaleForm() {
 				</select>
 
 				<div className='btn-container '>
-					<Link to={"/ventes"} state={data} className='cancel'>
+					<Link to={"/ventes"} state={{ id: nouveau ? parseInt(data.id) : parseInt(data.vente.collaborateur), annee: nouveau ? data.annee : parseInt(data.vente.date.substring(0, 4)) }} className='cancel'>
 						Annuler
 					</Link>
 					<button type='submit' disabled={!isFormValid} className={isFormValid ? "valid" : "valid disabled"}>

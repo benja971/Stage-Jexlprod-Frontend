@@ -10,12 +10,11 @@ function App() {
 	return (
 		<div className='App'>
 			<Routes>
-				<Route path='/' element={<Home />} />
-				<Route path='/collaborateur' element={<CollabForm />} />
+				<Route path='/' element={<Login />} />
+				<Route path='/collaborateurs' element={<Home />} />
+				<Route path='/collaborateurs/collaborateur' element={<CollabForm />} />
 				<Route path='/ventes' element={<Sales />} />
-				<Route path='/ventes/ajouter' element={<SaleForm />} />
-				<Route path='/ventes/modifier' element={<SaleForm />} />
-				<Route path='/login' element={<Login />} />
+				<Route path='/ventes/vente' element={<SaleForm />} />
 			</Routes>
 		</div>
 	);

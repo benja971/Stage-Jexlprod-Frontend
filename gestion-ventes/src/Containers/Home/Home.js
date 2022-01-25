@@ -42,8 +42,7 @@ export default function Home() {
 				<Link
 					className='btn-add'
 					to={{
-						pathname: "/collaborateur",
-						state: {},
+						pathname: "/collaborateurs/collaborateur",
 					}}
 				>
 					Ajouter un collaborateur

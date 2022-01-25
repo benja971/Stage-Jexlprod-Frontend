@@ -1,85 +1,89 @@
 .hero {
   height: 100vh;
   width: 100%;
-  background-color: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../../assets/login-hero-bg.jpg");
-  background-position: center;
-  background-size: cover;
-  position: absolute;
-  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
 }
 .hero .form-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   width: 380px;
   height: 480px;
-  position: relative;
-  margin: 6% auto;
-  background-color: #fff;
-  padding: 5px;
+  background-color: #dddddd;
   border-radius: 10px;
 }
-.hero .form-box .btn-box {
-  width: 220px;
-  margin: 35px auto;
-  position: relative;
-  box-shadow: 0 0 20px 9px #3c919255;
-  border-radius: 30px;
+.hero .form-box .login-form {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
-.hero .form-box .btn-box .btn {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 110px;
-  height: 100%;
-  background: linear-gradient(to left, #ff8458, #f8577d);
-  border-radius: 30px;
-  transition: 0.5s;
+.hero .form-box .login-form .check-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  font-size: 12px;
 }
-.hero .form-box .btn-box .btn.register {
-  left: 110px;
-  background: linear-gradient(to left, #ff8458, #f8577d);
-}
-.hero .form-box .btn-box .toggle-btn {
-  padding: 10px 30px;
+.hero .form-box .login-form .check-container .check-box {
+  margin: 21px -5px 20px 0;
   cursor: pointer;
-  background: transparent;
-  border: none;
-  outline: none;
-  position: relative;
 }
-.hero .form-box .input-group {
-  top: 180px;
-  position: absolute;
+.hero .form-box .login-form .input-group {
   width: 280px;
   transition: 0.5s;
+  margin: -25px 0 25px 0;
 }
-.hero .form-box .input-group#login, .hero .form-box .input-group#register {
-  left: 50px;
-}
-.hero .form-box .input-group .input-field {
+.hero .form-box .login-form .input-group .input-field {
   width: 100%;
   padding: 10px 0;
-  margin: 5px 0;
   border: none;
   border-bottom: 1px solid #999;
   outline: none;
   background: transparent;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding-left: 15px;
 }
-.hero .form-box .input-group .submit-btn {
-  width: 85%;
-  padding: 10px 30px;
+.hero .form-box .login-form .input-group .input-field:first-child {
+  margin-bottom: 15px;
+}
+.hero .form-box .login-form .input-group .forgotten {
+  color: #999;
   cursor: pointer;
-  display: block;
-  margin: auto;
-  background: linear-gradient(to left, #ff8458, #f8577d);
-  border: 0;
-  outline: none;
-  border-radius: 30px;
+  font-size: 12px;
+  text-decoration: underline;
+  margin-left: 55%;
 }
-.hero .form-box .input-group .check-box {
-  margin: 30px 10px 30px 0;
+.hero .form-box .login-form .input-group .forgotten:hover {
+  color: royalblue;
 }
-.hero .form-box .input-group .pass-span {
+.hero .form-box .login-form .input-group .pass-span {
   color: #777;
   font-size: 12px;
   bottom: 65px;
   position: absolute;
+}
+.hero .form-box .login-form .submit-btn {
+  width: 40%;
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  margin-top: 15px;
+  background: linear-gradient(to left, #ff8458, #f8577d);
+  border: 0;
+  outline: none;
+  border-radius: 30px;
+  transition: box-shadow 0.2s;
+}
+.hero .form-box .login-form .submit-btn:hover {
+  box-shadow: 0px 0px 10px #f8577dff;
 }

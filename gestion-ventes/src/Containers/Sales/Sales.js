@@ -8,8 +8,10 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 
 export default function Sales() {
+	// console.log(useLocation().state);
 	const { id, annee } = useLocation().state;
-	console.log(useLocation().state);
+
+	// console.log("Sales", id, annee);
 
 	const anneeaffichage = useSelector(state => state.ventesReducer.annee);
 
@@ -47,11 +49,11 @@ export default function Sales() {
 	return (
 		<>
 			<div className='header'>
-				<Link to={"/"} className='btn-add'>
+				<Link to={"/collaborateurs"} className='btn-add'>
 					Retour
 				</Link>
 
-				<Link className='btn-add' to={"/ventes/ajouter"} state={{ id, annee }}>
+				<Link className='btn-add' to={"/ventes/vente#nouvelle-vente"} state={{ id, annee, nouveau: true }}>
 					Ajouter une vente
 				</Link>
 

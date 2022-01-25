@@ -95,7 +95,7 @@ export default function CollabForm() {
 
 		dispatch(requestDB(isNew ? "NewCollaborateur" : "ModifCollaborateur", collab));
 
-		window.location.href = "/";
+		window.location.href = "/collaborateurs";
 	};
 
 	useEffect(() => {
@@ -151,7 +151,7 @@ export default function CollabForm() {
 				</select>
 
 				<div className='btn-container'>
-					<Link to={"/"}>Annuler</Link>
+					<Link to={"/collaborateurs"}>Annuler</Link>
 					<button type='submit' id='submit' className={!isFormValid ? "disabled" : ""} {...(!isFormValid && { disabled: true })}>
 						Valider
 					</button>

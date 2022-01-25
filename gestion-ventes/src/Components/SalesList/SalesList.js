@@ -15,11 +15,14 @@ export default function SalesList() {
 		id = useLocation().state.id;
 	} catch (error) {
 		// eslint-disable-next-line react-hooks/rules-of-hooks
-		id = useSelector(state => state.ventesReducer);
+		id = parseInt(useLocation().state.vente.collaborateur);
 	}
+	console.log("SalesList collaborateur id: ", id);
 
 	const { ventes, annee } = useSelector(state => state.ventesReducer);
 	const { isPopupVisible } = useSelector(state => state.delPopupReducer);
+
+	// console.log("SalesList", id, annee, ventes);
 
 	const dispatch = useDispatch();
 
@@ -36,7 +39,7 @@ export default function SalesList() {
 	};
 
 	useEffect(() => {
-		if (annee) dispatch(loadVentes(annee, id));
+		annee && dispatch(loadVentes(annee, id));
 	}, [annee, id, dispatch]);
 
 	return (
@@ -45,9 +48,9 @@ export default function SalesList() {
 			<table>
 				<thead>
 					<tr>
-						<th>Collaborateur</th>
 						<th>Libéllé</th>
-						<th>Prix</th>
+						<th>Prix HT</th>
+						<th>Prix TTC</th>
 						<th>Date</th>
 						<th>Actions</th>
 					</tr>
@@ -56,12 +59,12 @@ export default function SalesList() {
 					{ventes.map(vente => {
 						return (
 							<Sale key={uuidv4()}>
-								<td>{vente.collab}</td>
 								<td>{vente.adresse}</td>
 								<td>{parseFloat(vente.prix).toFixed(2)} €</td>
+								<td>{parseFloat(vente.prix).toFixed(2) * 0.8} €</td>
 								<td>{vente.date}</td>
 								<td id='action'>
-									<Link to='/ventes/modifier' state={vente}>
+									<Link to={`/ventes/vente#${vente.collab}`.replace(" ", "-")} state={{ vente, nouveau: false }}>
 										<i className='material-icons edit-icon'>mode_edit</i>
 									</Link>
 									<button
