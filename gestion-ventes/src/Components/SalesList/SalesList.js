@@ -51,8 +51,8 @@ export default function SalesList() {
 				<thead>
 					<tr>
 						<th>Libéllé</th>
-						<th>Prix HT</th>
-						<th>Prix TTC</th>
+						<th>Commissions HT</th>
+						<th>Commissions TTC</th>
 						<th>Date</th>
 						<th>Actions</th>
 					</tr>
@@ -62,8 +62,8 @@ export default function SalesList() {
 						return (
 							<Sale key={uuidv4()}>
 								<td>{vente.adresse}</td>
-								<td>{parseFloat(vente.prix).toFixed(2)} €</td>
-								<td>{parseFloat(vente.prix).toFixed(2) * 0.8} €</td>
+								<td>{parseFloat(vente.commission_ht).toFixed(2)} €</td>
+								<td>{parseFloat(vente.commission_ttc).toFixed(2)} €</td>
 								<td>{vente.date}</td>
 								<td id='action'>
 									<Link to={`/ventes#${vente.collab}/vente#${vente.collab}`.replace(" ", "-")} state={{ vente, nouveau: false }}>

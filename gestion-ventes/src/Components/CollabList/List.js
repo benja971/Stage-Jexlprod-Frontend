@@ -30,8 +30,7 @@ export default function CollabList() {
 			<table>
 				<thead>
 					<tr>
-						<th>Nom</th>
-						<th>Prénom</th>
+						<th>Collaborateur</th>
 						<th>Volume HT</th>
 						<th>Volume TTC</th>
 						<th>Actions</th>
@@ -41,15 +40,16 @@ export default function CollabList() {
 					{collaborateurs.map(collab => {
 						return (
 							<tr key={uuidv4()}>
-								<td>{collab.nom}</td>
-								<td>{collab.prenom}</td>
 								<td>
-									<Link className='euro' to={`/ventes#${collab.nom}-${collab.prenom}`} state={{ id: collab.id, annee }}>
+									{collab.prenom} {collab.nom}
+								</td>
+								<td>
+									<Link className='euro' to={`/ventes#${collab.nom}-${collab.prenom}`} state={{ id: collab.id_collaborateur, annee }}>
 										{parseFloat(collab.commission_ht).toFixed(2)}€
 									</Link>
 								</td>
 								<td>
-									<Link className='euro' to={`/ventes#${collab.nom}-${collab.prenom}`} state={{ id: collab.id, annee }}>
+									<Link className='euro' to={`/ventes#${collab.nom}-${collab.prenom}`} state={{ id: collab.id_collaborateur, annee }}>
 										{parseFloat(collab.commission_ttc).toFixed(2)}€
 									</Link>
 								</td>
@@ -57,7 +57,7 @@ export default function CollabList() {
 									<Link to={`/collaborateurs/collaborateur#${collab.nom}-${collab.prenom}`} state={{ collaborateur: collab }}>
 										<i className='material-icons edit-icon'>mode_edit</i>
 									</Link>
-									<button onClick={() => handleDelete(collab.id, annee)}>
+									<button onClick={() => handleDelete(collab.id_collaborateur, annee)}>
 										<i className='material-icons delete-icon'>delete</i>
 									</button>
 								</td>

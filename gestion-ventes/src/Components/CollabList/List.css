@@ -24,7 +24,7 @@ thead tr th {
 	font-weight: bold;
 	text-align: center;
 	user-select: none;
-	width: 20%;
+	width: 25%;
 	padding-bottom: 10px;
 }
 
@@ -44,7 +44,7 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr td {
-	width: 20%;
+	width: 25%;
 	border-radius: 5px;
 	outline: none;
 	border: none;
