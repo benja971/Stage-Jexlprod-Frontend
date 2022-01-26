@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./LoginForm.css";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { logIn } from "../../redux/logged/loginReducer";
@@ -11,6 +10,8 @@ export default function LoginForm() {
 		email: "",
 		password: "",
 	});
+
+	const errorRef = useRef(null);
 
 	const isLogged = useSelector(state => state.loginReducer.isLogged);
 
@@ -32,7 +33,7 @@ export default function LoginForm() {
 				if (parseInt(data.success)) {
 					dispatch(logIn());
 				} else {
-					console.log("Email ou mot de passe incorrect");
+					errorRef.current.classList.remove("invisible");
 				}
 			});
 	};
@@ -53,6 +54,10 @@ export default function LoginForm() {
 			<div className='input-group'>
 				<input type='email' name='email' className='input-field' placeholder='Entrez votre adresse email' onChange={handleChange} required />
 				<input type='password' name='password' className='input-field' placeholder='Entrez votre mot de passe' onChange={handleChange} required />
+				<p ref={errorRef} className='invisible'>
+					Email ou mot de passe incorrect
+				</p>
+
 				<Link className='forgotten' to={"/"}>
 					Mot de passe oublié ?
 				</Link>

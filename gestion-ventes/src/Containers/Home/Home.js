@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function Home() {
 	const isLogged = useSelector(state => state.loginReducer.isLogged);
-	if (!isLogged) window.location.href = "/";
+	// if (!isLogged) window.location.href = "/";
 
 	const [annees, setAnnees] = useState([]);
 
@@ -27,14 +27,20 @@ export default function Home() {
 		})
 			.then(response => response.json())
 			.then(data => {
-				if (data.length) {
+				if (data.length > 0) {
+					console.log(data);
 					setAnnees(data);
 					dispatch({
 						type: "SET_ANNEE_COLLABORATEURS",
 						payload: parseInt(data[0]),
 					});
 				} else {
-					setAnnees([new Date().getFullYear().toString()]);
+					const annee = parseInt(new Date().getFullYear());
+					setAnnees([annee]);
+					dispatch({
+						type: "SET_ANNEE_COLLABORATEURS",
+						payload: annee,
+					});
 				}
 			});
 	}, [dispatch]);

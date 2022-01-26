@@ -39,18 +39,19 @@ export default function CollabList() {
 				</thead>
 				<tbody>
 					{collaborateurs.map(collab => {
+						console.log(collab);
 						return (
 							<tr key={uuidv4()}>
 								<td>{collab.nom}</td>
 								<td>{collab.prenom}</td>
 								<td>
 									<Link className='euro' to={`/ventes#${collab.nom}-${collab.prenom}`} state={{ id: collab.id, annee }}>
-										{parseFloat(collab.volume).toFixed(2)}€
+										{parseFloat(collab.commission_ht).toFixed(2)}€
 									</Link>
 								</td>
 								<td>
 									<Link className='euro' to={`/ventes#${collab.nom}-${collab.prenom}`} state={{ id: collab.id, annee }}>
-										{parseFloat(collab.volume).toFixed(2) * 0.8}€
+										{parseFloat(collab.commission_ttc).toFixed(2)}€
 									</Link>
 								</td>
 								<td id='action'>
