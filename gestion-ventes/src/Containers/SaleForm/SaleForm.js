@@ -7,7 +7,7 @@ import { requestDB } from "../../redux/ventes/ventesReducer";
 
 export default function SaleForm() {
 	const isLogged = useSelector(state => state.loginReducer.isLogged);
-	if (!isLogged) window.location.href = "/";
+	// if (!isLogged) window.location.href = "/";
 
 	const data = useLocation().state;
 	const nouveau = data.nouveau;
@@ -20,8 +20,8 @@ export default function SaleForm() {
 					ville: "",
 					code_postal: "",
 					date: "",
-					prix: 0,
-					collaborateur: "",
+					prix: "",
+					collaborateur: parseInt(data.id),
 			  }
 			: data.vente,
 	);
@@ -78,7 +78,6 @@ export default function SaleForm() {
 			.then(response => response.json())
 			.then(data => {
 				setCollabs(data);
-				nouveau && setVente({ ...vente, collaborateur: nouveau ? data.id : parseInt(data.vente.collaborateur) });
 			});
 	}, []);
 
@@ -92,11 +91,13 @@ export default function SaleForm() {
 		navigate("/ventes", { state: { id: nouveau ? data.id : parseInt(vente.collaborateur), annee: nouveau ? data.annee : parseInt(data.vente.date.substring(0, 4)) } });
 	};
 
+	console.table(vente);
+
 	return (
 		<>
 			<h1>{nouveau ? "Nouvelle " : "Modifier la "} vente</h1>
 			<form className='form-app' ref={formRef} onSubmit={handleSubmit}>
-				<input type='hidden' name='id' onChange={handleChange} />
+				<input type='hidden' name='id' />
 
 				<label htmlFor='adresse'>Libéllé</label>
 				<input ref={addToInputsRef} type='text' name='adresse' placeholder='Libéllé' onChange={handleChange} value={vente.adresse} />
@@ -113,13 +114,14 @@ export default function SaleForm() {
 				<label htmlFor='date'>Date</label>
 				<input ref={addToInputsRef} type='date' name='date' onChange={handleChange} value={vente.date} />
 
-				<label htmlFor='prix'>Prix de la commission</label>
-				<input ref={addToInputsRef} type='number' min={0} step={0.01} name='prix' placeholder='Prix' onChange={handleChange} value={vente.prix} />
+				<label htmlFor='prix'>Valeur HT de la commission</label>
+				<input ref={addToInputsRef} type='number' min={0} step={0.01} name='prix' placeholder='Commission' onChange={handleChange} value={vente.prix} />
 
 				<label htmlFor='collaborateur' onChange={handleChange} value={vente.collaborateur}>
 					Collaborateur
 				</label>
-				<select ref={addToInputsRef} name='collaborateur' onChange={handleChange} value={vente.collaborateur}>
+
+				<select ref={addToInputsRef} name='collaborateur' onChange={handleChange} value={data.id}>
 					{collabs.map(collab => {
 						return (
 							<option key={uuidv4()} value={collab.id}>

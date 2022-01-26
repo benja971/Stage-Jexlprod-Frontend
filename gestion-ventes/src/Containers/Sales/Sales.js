@@ -9,7 +9,7 @@ import { useLocation } from "react-router";
 
 export default function Sales() {
 	const isLogged = useSelector(state => state.loginReducer.isLogged);
-	if (!isLogged) window.location.href = "/";
+	// if (!isLogged) window.location.href = "/";
 
 	const { id, annee } = useLocation().state;
 

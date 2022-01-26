@@ -69,7 +69,7 @@ export default function LoginForm() {
 			</div> */}
 
 			<button type='submit' className='submit-btn'>
-				Log in
+				Se connecter
 			</button>
 		</form>
 	);

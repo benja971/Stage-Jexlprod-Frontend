@@ -10,14 +10,16 @@ import { useLocation } from "react-router";
 
 export default function SalesList() {
 	let id;
-	try {
-		// eslint-disable-next-line react-hooks/rules-of-hooks
-		id = useLocation().state.id;
-	} catch (error) {
-		// eslint-disable-next-line react-hooks/rules-of-hooks
-		id = parseInt(useLocation().state.vente.collaborateur);
+	if (id === undefined) {
+		try {
+			// eslint-disable-next-line react-hooks/rules-of-hooks
+			id = useLocation().state.id;
+		} catch (error) {
+			// eslint-disable-next-line react-hooks/rules-of-hooks
+			id = parseInt(useLocation().state.vente.collaborateur);
+		}
+		// console.log("SalesList collaborateur id: ", id);
 	}
-	console.log("SalesList collaborateur id: ", id);
 
 	const { ventes, annee } = useSelector(state => state.ventesReducer);
 	const { isPopupVisible } = useSelector(state => state.delPopupReducer);
@@ -64,7 +66,7 @@ export default function SalesList() {
 								<td>{parseFloat(vente.prix).toFixed(2) * 0.8} €</td>
 								<td>{vente.date}</td>
 								<td id='action'>
-									<Link to={`/ventes/vente#${vente.collab}`.replace(" ", "-")} state={{ vente, nouveau: false }}>
+									<Link to={`/ventes#${vente.collab}/vente#${vente.collab}`.replace(" ", "-")} state={{ vente, nouveau: false }}>
 										<i className='material-icons edit-icon'>mode_edit</i>
 									</Link>
 									<button

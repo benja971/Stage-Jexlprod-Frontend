@@ -39,7 +39,6 @@ export default function CollabList() {
 				</thead>
 				<tbody>
 					{collaborateurs.map(collab => {
-						console.log(collab);
 						return (
 							<tr key={uuidv4()}>
 								<td>{collab.nom}</td>
