@@ -26,7 +26,7 @@ export default function SaleForm() {
 			: data.vente,
 	);
 
-	console.log(vente.collaborateur);
+	// console.table(vente);
 
 	const formRef = useRef(null);
 	const inputsRef = useRef([]);
@@ -87,6 +87,8 @@ export default function SaleForm() {
 		e.preventDefault();
 
 		dispatch({ type: "SET_ID_CURRENT", payload: vente.collaborateur });
+
+		console.table(vente);
 
 		dispatch(requestDB(nouveau ? "NewVente" : "UpdateVente", vente));
 
