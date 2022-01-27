@@ -28,7 +28,6 @@ export default function Home() {
 			.then(response => response.json())
 			.then(data => {
 				if (data.length > 0) {
-					console.log(data);
 					setAnnees(data);
 					dispatch({
 						type: "SET_ANNEE_COLLABORATEURS",

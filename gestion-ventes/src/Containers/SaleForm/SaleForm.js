@@ -26,6 +26,8 @@ export default function SaleForm() {
 			: data.vente,
 	);
 
+	console.log(vente.collaborateur);
+
 	const formRef = useRef(null);
 	const inputsRef = useRef([]);
 	const zip_error = useRef(null);
@@ -91,8 +93,6 @@ export default function SaleForm() {
 		navigate("/ventes", { state: { id: nouveau ? data.id : parseInt(vente.collaborateur), annee: nouveau ? data.annee : parseInt(data.vente.date.substring(0, 4)) } });
 	};
 
-	console.table(vente);
-
 	return (
 		<>
 			<h1>{nouveau ? "Nouvelle " : "Modifier la "} vente</h1>
@@ -121,10 +121,10 @@ export default function SaleForm() {
 					Collaborateur
 				</label>
 
-				<select ref={addToInputsRef} name='collaborateur' onChange={handleChange} value={data.id}>
+				<select ref={addToInputsRef} name='collaborateur' onChange={handleChange} value={vente.collaborateur}>
 					{collabs.map(collab => {
 						return (
-							<option key={uuidv4()} value={collab.id}>
+							<option key={uuidv4()} value={collab.id_collaborateur}>
 								{collab.nom}
 							</option>
 						);

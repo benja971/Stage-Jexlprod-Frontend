@@ -43,8 +43,10 @@ export const requestDB = (file, body) => dispatch => {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
+			// "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
 		},
 		body: JSON.stringify(body),
+		// body: new URLSearchParams(body),
 	}).then(dispatch(loadVentes(year, collaborateur)));
 };
 

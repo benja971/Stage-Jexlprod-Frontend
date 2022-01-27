@@ -44,12 +44,12 @@ export default function CollabList() {
 									{collab.prenom} {collab.nom}
 								</td>
 								<td>
-									<Link className='euro' to={`/ventes#${collab.nom}-${collab.prenom}`} state={{ id: collab.id_collaborateur, annee }}>
+									<Link className='euro' to={`/ventes#${collab.nom}-${collab.prenom}`} state={{ id: collab.id_collaborateur, annee, commission: collab.commission_ttc }}>
 										{parseFloat(collab.commission_ht).toFixed(2)}€
 									</Link>
 								</td>
 								<td>
-									<Link className='euro' to={`/ventes#${collab.nom}-${collab.prenom}`} state={{ id: collab.id_collaborateur, annee }}>
+									<Link className='euro' to={`/ventes#${collab.nom}-${collab.prenom}`} state={{ id: collab.id_collaborateur, annee, commission: collab.commission_ttc }}>
 										{parseFloat(collab.commission_ttc).toFixed(2)}€
 									</Link>
 								</td>

@@ -24,8 +24,6 @@ export default function SalesList() {
 	const { ventes, annee } = useSelector(state => state.ventesReducer);
 	const { isPopupVisible } = useSelector(state => state.delPopupReducer);
 
-	// console.log("SalesList", id, annee, ventes);
-
 	const dispatch = useDispatch();
 
 	const handleDelete = id_vente => {

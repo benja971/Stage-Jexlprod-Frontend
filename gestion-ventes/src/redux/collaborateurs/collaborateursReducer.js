@@ -23,7 +23,6 @@ export const collaborateursReducer = (state = INITIAL_STATE, action) => {
 };
 
 export const loadCollaborateurs = annee => dispatch => {
-	console.log(annee);
 	fetch("http://localhost:80/Stage-Jexlprod-Backend/Collaborateurs/LoadCollaborateurs.php", {
 		method: "POST",
 		headers: {
@@ -33,7 +32,6 @@ export const loadCollaborateurs = annee => dispatch => {
 	})
 		.then(response => response.json())
 		.then(data => {
-			console.log(data);
 			dispatch({
 				type: "LOAD_COLLABORATEURS",
 				payload: data,
