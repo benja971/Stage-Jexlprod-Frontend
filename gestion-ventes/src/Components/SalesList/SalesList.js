@@ -48,6 +48,8 @@ export default function SalesList() {
 				<thead>
 					<tr>
 						<th>Libéllé</th>
+						<th>Frais d'agence HT</th>
+						<th>Frais d'agence TTC</th>
 						<th>Commissions HT</th>
 						<th>Commissions TTC</th>
 						<th>Date</th>
@@ -59,6 +61,8 @@ export default function SalesList() {
 						return (
 							<Sale key={uuidv4()}>
 								<td>{vente.adresse}</td>
+								<td>{vente.frais_agence} €</td>
+								<td>{vente.frais_agence * 0.8} €</td>
 								<td>{parseFloat(vente.commission_ht).toFixed(2)} €</td>
 								<td>{parseFloat(vente.commission_ttc).toFixed(2)} €</td>
 								<td>{vente.date}</td>

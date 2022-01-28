@@ -20,7 +20,7 @@ export default function SaleForm() {
 					code_postal: "",
 					date: "",
 					frais_agence: "",
-					collaborateur: parseInt(data.id),
+					collaborateur: data.id,
 			  }
 			: data.vente,
 	);
@@ -59,10 +59,7 @@ export default function SaleForm() {
 		}
 
 		//collaborateur
-		else if (name === "collaborateur") {
-			value = value === "" ? "" : parseInt(value);
-		}
-
+		else if (name === "collaborateur") value = parseInt(value);
 		//prix
 		else if (name === "frais_agence") value = value === "" ? "" : parseFloat(value);
 
@@ -75,9 +72,7 @@ export default function SaleForm() {
 			method: "GET",
 		})
 			.then(response => response.json())
-			.then(data => {
-				setCollabs(data);
-			});
+			.then(data => setCollabs(data));
 	}, []);
 
 	const handleSubmit = e => {
@@ -87,9 +82,8 @@ export default function SaleForm() {
 
 		dispatch(requestDB(nouveau ? "NewVente" : "UpdateVente", vente));
 
-		console.log({ state: { id: nouveau ? data.id : parseInt(vente.id_collaborateur), annee: nouveau ? data.annee : parseInt(data.vente.date.substring(0, 4)) } });
-
-		navigate("/ventes", { state: { id: nouveau ? data.id : parseInt(vente.id_collaborateur), annee: nouveau ? data.annee : parseInt(data.vente.date.substring(0, 4)) } });
+		// TODO: redirect to /ventes#COllaborateur.nom-prenom
+		navigate(`/ventes#`, { state: { id: nouveau ? data.id : parseInt(vente.id_collaborateur), annee: nouveau ? data.annee : parseInt(data.vente.date.substring(0, 4)) } });
 	};
 
 	return (
@@ -97,30 +91,23 @@ export default function SaleForm() {
 			<h1>{nouveau ? "Nouvelle " : "Modifier la "} vente</h1>
 			<form className='form-app' ref={formRef} onSubmit={handleSubmit}>
 				<input type='hidden' name='id' />
-
 				<label htmlFor='adresse'>Libéllé</label>
 				<input ref={addToInputsRef} type='text' name='adresse' placeholder='Libéllé' onChange={handleChange} value={vente.adresse} />
-
 				<label htmlFor='ville'>Ville</label>
 				<input ref={addToInputsRef} type='text' name='ville' placeholder='Ville' onChange={handleChange} value={vente.ville} />
-
 				<label htmlFor='code_postal'>Code postal</label>
 				<input ref={addToInputsRef} type='number' pattern='^\s*?\d{5}(?:[-\s]\d{4})?\s*?$' name='code_postal' placeholder='Code postal' onChange={handleChange} value={vente.code_postal} />
 				<p ref={zip_error} className='invisible'>
 					Le code postal est invallide
 				</p>
-
 				<label htmlFor='date'>Date</label>
 				<input ref={addToInputsRef} type='date' name='date' onChange={handleChange} value={vente.date} />
-
 				<label htmlFor='frais_agence'>Valeur HT des frais d'agence</label>
 				<input ref={addToInputsRef} type='number' min={0} step={0.01} name='frais_agence' placeholder='Commission' onChange={handleChange} value={vente.frais_agence} />
-
 				<label htmlFor='collaborateur' onChange={handleChange} value={vente.id_collaborateur}>
 					Collaborateur
 				</label>
-
-				<select ref={addToInputsRef} name='collaborateur' onChange={handleChange} value={vente.id_collaborateur}>
+				<select ref={addToInputsRef} name='collaborateur' value={vente.collaborateur} onChange={handleChange}>
 					{collabs.map(collab => {
 						return (
 							<option key={uuidv4()} value={collab.id_collaborateur}>
@@ -129,9 +116,9 @@ export default function SaleForm() {
 						);
 					})}
 				</select>
-
+				{/* TODO: redirect to /ventes#Collaborateur.nom-prenom */}
 				<div className='btn-container '>
-					<Link to={"/ventes"} state={{ id: nouveau ? parseInt(data.id) : parseInt(data.vente.id_collaborateur), annee: nouveau ? data.annee : parseInt(data.vente.date.substring(0, 4)) }} className='cancel'>
+					<Link to={`/ventes`} state={{ id: nouveau ? parseInt(data.id) : parseInt(data.vente.id_collaborateur), annee: nouveau ? data.annee : parseInt(data.vente.date.substring(0, 4)) }} className='cancel'>
 						Annuler
 					</Link>
 					<button type='submit' disabled={!isFormValid} className={isFormValid ? "valid" : "valid disabled"}>
