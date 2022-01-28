@@ -27,21 +27,11 @@ export default function Home() {
 		})
 			.then(response => response.json())
 			.then(data => {
-				console.log("Aucune année trouvée");
-				if (data.length > 0) {
-					setAnnees(data);
-					dispatch({
-						type: "SET_ANNEE_COLLABORATEURS",
-						payload: parseInt(data[0]),
-					});
-				} else {
-					const annee = parseInt(new Date().getFullYear());
-					setAnnees([annee]);
-					dispatch({
-						type: "SET_ANNEE_COLLABORATEURS",
-						payload: annee,
-					});
-				}
+				setAnnees(data);
+				dispatch({
+					type: "SET_ANNEE_COLLABORATEURS",
+					payload: parseInt(data[0]),
+				});
 			});
 	}, [dispatch]);
 

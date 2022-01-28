@@ -18,7 +18,6 @@ export default function SalesList() {
 			// eslint-disable-next-line react-hooks/rules-of-hooks
 			id = parseInt(useLocation().state.vente.collaborateur);
 		}
-		// console.log("SalesList collaborateur id: ", id);
 	}
 
 	const { ventes, annee } = useSelector(state => state.ventesReducer);
@@ -64,7 +63,7 @@ export default function SalesList() {
 								<td>{parseFloat(vente.commission_ttc).toFixed(2)} €</td>
 								<td>{vente.date}</td>
 								<td id='action'>
-									<Link to={`/ventes#${vente.collab}/vente#${vente.collab}`.replace(" ", "-")} state={{ vente, nouveau: false }}>
+									<Link to={`/ventes/vente#${vente.collab}`.replace(" ", "-")} state={{ vente, nouveau: false }}>
 										<i className='material-icons edit-icon'>mode_edit</i>
 									</Link>
 									<button

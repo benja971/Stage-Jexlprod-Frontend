@@ -21,7 +21,7 @@ export const ventesReducer = (state = INITIAL_STATE, action) => {
 };
 
 export const loadVentes = (annee, id) => dispatch => {
-	if (annee)
+	if (annee && id)
 		fetch("http://localhost/Stage-Jexlprod-Backend/ventes/LoadVentes.php", {
 			method: "POST",
 			headers: {

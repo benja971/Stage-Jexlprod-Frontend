@@ -36,9 +36,6 @@ export const loadCollaborateurs = annee => dispatch => {
 				type: "LOAD_COLLABORATEURS",
 				payload: data,
 			});
-		})
-		.catch(err => {
-			console.log("Collaborateurs liste : ", err.message);
 		});
 };
 

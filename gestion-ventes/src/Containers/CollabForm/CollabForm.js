@@ -146,7 +146,7 @@ export default function CollabForm() {
 				<select ref={addInputToRef} name='statut' value={collab.statut} onChange={handleChange}>
 					{roles.map(role => {
 						return (
-							<option key={uuidv4()} value={role.id}>
+							<option key={uuidv4()} value={role.id_role}>
 								{role.nom}
 							</option>
 						);
