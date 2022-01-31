@@ -27,10 +27,13 @@ export default function CollabList() {
 	return (
 		<>
 			{isPopupVisible && <DelPopup location='Collaborateurs' />}
-			<table>
-				<thead>
+			<table className='collab-list-table'>
+				<thead className='collab-list-thead'>
 					<tr>
-						<th>Collaborateur</th>
+						<th>
+							<span>Colla</span>
+							<span>borateur</span>
+						</th>
 						<th>Volume HT</th>
 						<th>Volume TTC</th>
 						<th>Actions</th>

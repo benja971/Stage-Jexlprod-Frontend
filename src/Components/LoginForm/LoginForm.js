@@ -50,27 +50,30 @@ export default function LoginForm() {
 	}, [isLogged, navigate]);
 
 	return (
-		<form className='login-form' onSubmit={handleSubmit}>
-			<div className='input-group'>
-				<input type='email' name='email' className='input-field' placeholder='Entrez votre adresse email' onChange={handleChange} required />
-				<input type='password' name='password' className='input-field' placeholder='Entrez votre mot de passe' onChange={handleChange} required />
-				<p ref={errorRef} className='invisible'>
-					Email ou mot de passe incorrect
-				</p>
-
+		<>
+			<form className='login-form' onSubmit={handleSubmit}>
+				<div className='input-group'>
+					<input type='email' name='email' className='input-field' placeholder='Entrez votre adresse email' onChange={handleChange} required />
+					<input type='password' name='password' className='input-field' placeholder='Entrez votre mot de passe' onChange={handleChange} required />
+					<p ref={errorRef} className='invisible'>
+						Email ou mot de passe incorrect
+					</p>
+				</div>
 				<Link className='forgotten' to={"/"}>
 					Mot de passe oublié ?
 				</Link>
-			</div>
 
-			{/* <div className='check-container'>
+				{/* <div className='check-container'>
 				<input type='checkbox' className='check-box' />
 				<span className='pass-span'>Remember password</span>
 			</div> */}
 
-			<button type='submit' className='submit-btn'>
-				Se connecter
-			</button>
-		</form>
+				<div className='login-btn-container'>
+					<button type='submit' className='submit-btn'>
+						Se connecter
+					</button>
+				</div>
+			</form>
+		</>
 	);
 }

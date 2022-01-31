@@ -1,0 +1,185 @@
+@media (max-width: 768px) {
+  .form-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 380px;
+    height: 480px;
+    background-color: #dddddd;
+    border-radius: 10px;
+  }
+  .form-box .login-form {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .form-box .login-form .check-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    font-size: 12px;
+  }
+  .form-box .login-form .check-container .check-box {
+    margin: 21px -5px 20px 0;
+    cursor: pointer;
+  }
+  .form-box .login-form .input-group {
+    width: 280px;
+    transition: 0.5s;
+    margin: -25px 0 25px 0;
+  }
+  .form-box .login-form .input-group .invisible {
+    opacity: 0;
+    background: black;
+  }
+  .form-box .login-form .input-group .input-field {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 15px;
+  }
+  .form-box .login-form .input-group .input-field:-webkit-autofill, .form-box .login-form .input-group .input-field:-webkit-autofill:hover, .form-box .login-form .input-group .input-field:-webkit-autofill:focus, .form-box .login-form .input-group .input-field:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #dddddd inset;
+  }
+  .form-box .login-form .input-group .input-field:focus {
+    border-bottom: 1px solid #000;
+  }
+  .form-box .login-form .input-group .input-field:first-child {
+    margin-bottom: 15px;
+  }
+  .form-box .login-form .input-group .forgotten {
+    color: #999;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: underline;
+    margin-left: 55%;
+  }
+  .form-box .login-form .input-group .forgotten:hover {
+    color: #f85a79;
+  }
+  .form-box .login-form .input-group .pass-span {
+    color: #777;
+    font-size: 12px;
+    bottom: 65px;
+    position: absolute;
+  }
+  .form-box .login-form .submit-btn {
+    width: 40%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    margin-top: 35px;
+    background: linear-gradient(to left, #ff8458, #f8577d);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    transition: box-shadow 0.2s;
+  }
+  .form-box .login-form .submit-btn:hover {
+    box-shadow: 0px 0px 10px #f8577dff;
+  }
+}
+@media (min-width: 768px) {
+  .form-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 700px;
+    height: 350px;
+    background-color: #dddddd;
+    border-radius: 10px;
+  }
+  .form-box .login-form {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .form-box .login-form .check-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    font-size: 12px;
+    display: none;
+  }
+  .form-box .login-form .check-container .check-box {
+    margin: 21px -5px 20px 0;
+    cursor: pointer;
+  }
+  .form-box .login-form .input-group {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  .form-box .login-form .input-group .invisible {
+    display: none;
+  }
+  .form-box .login-form .input-group .input-field {
+    padding: 10px 0;
+    width: 35%;
+    border: none;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding-left: 15px;
+  }
+  .form-box .login-form .input-group .input-field:-webkit-autofill, .form-box .login-form .input-group .input-field:-webkit-autofill:hover, .form-box .login-form .input-group .input-field:-webkit-autofill:focus, .form-box .login-form .input-group .input-field:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #dddddd inset;
+  }
+  .form-box .login-form .input-group .input-field:focus {
+    border-bottom: 1px solid #000;
+  }
+  .form-box .login-form .forgotten {
+    color: #999;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: underline;
+  }
+  .form-box .login-form .forgotten:hover {
+    color: #f85a79;
+  }
+  .form-box .login-form .pass-span {
+    color: #777;
+    font-size: 12px;
+  }
+  .form-box .login-form .login-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .form-box .login-form .login-btn-container .submit-btn {
+    width: 30%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    background: linear-gradient(to left, #ff8458, #f8577d);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    transition: box-shadow 0.2s;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .form-box .login-form .login-btn-container .submit-btn:hover {
+    box-shadow: 0px 0px 10px #f8577dff;
+  }
+}

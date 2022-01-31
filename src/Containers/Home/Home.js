@@ -44,7 +44,8 @@ export default function Home() {
 						pathname: "/collaborateurs/collaborateur",
 					}}
 				>
-					Ajouter un collaborateur
+					<i className='material-icons'>person_add</i>
+					<span>Ajouter un collaborateur</span>
 				</Link>
 
 				<div className='annee-container'>

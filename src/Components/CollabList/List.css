@@ -1,0 +1,242 @@
+@media screen and (min-width: 850px) {
+  .collab-list-table {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-top: 25px;
+    color: #f4f4f4;
+  }
+  .collab-list-table .collab-list-thead {
+    display: flex;
+    border-bottom: 1px solid #d9d9d9;
+  }
+  .collab-list-table .collab-list-thead tr {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    user-select: none;
+    width: 100%;
+  }
+  .collab-list-table .collab-list-thead tr th {
+    font-weight: bold;
+    text-align: center;
+    user-select: none;
+    padding-bottom: 10px;
+    font-size: 1.7rem;
+    width: 20%;
+  }
+  .collab-list-table tbody tr {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    user-select: none;
+    padding: 10px 0;
+  }
+  .collab-list-table tbody tr:nth-child(odd) {
+    background-color: #535353;
+  }
+  .collab-list-table tbody tr:nth-child(even) {
+    background-color: #353535;
+  }
+  .collab-list-table tbody tr td {
+    outline: none;
+    border: none;
+    user-select: none;
+    text-align: center;
+    font-size: 1.3rem;
+    width: 20%;
+  }
+  .collab-list-table tbody tr td .euro {
+    text-decoration: none;
+    color: #f4f4e7;
+  }
+  .collab-list-table tbody tr td#action {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 1.3rem;
+  }
+  .collab-list-table tbody tr td#action .edit-icon {
+    color: green;
+  }
+  .collab-list-table tbody tr td#action .delete-icon {
+    color: red;
+  }
+  .collab-list-table tbody tr td#action button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    user-select: none;
+  }
+}
+@media screen and (max-width: 850px) {
+  .collab-list-table {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-top: 25px;
+    color: #f4f4f4;
+  }
+  .collab-list-table .collab-list-thead {
+    display: flex;
+    border-bottom: 1px solid #d9d9d9;
+  }
+  .collab-list-table .collab-list-thead tr {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    user-select: none;
+    width: 100%;
+  }
+  .collab-list-table .collab-list-thead tr th {
+    font-weight: bold;
+    text-align: center;
+    user-select: none;
+    padding-bottom: 10px;
+    font-size: 1.5rem;
+    width: 20%;
+  }
+  .collab-list-table tbody tr {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    user-select: none;
+    padding: 10px 0;
+  }
+  .collab-list-table tbody tr:nth-child(odd) {
+    background-color: #535353;
+  }
+  .collab-list-table tbody tr:nth-child(even) {
+    background-color: #353535;
+  }
+  .collab-list-table tbody tr td {
+    outline: none;
+    border: none;
+    user-select: none;
+    text-align: center;
+    font-size: 1.3rem;
+    width: 20%;
+  }
+  .collab-list-table tbody tr td .euro {
+    text-decoration: none;
+    color: #f4f4e7;
+  }
+  .collab-list-table tbody tr td#action {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1.3rem;
+  }
+  .collab-list-table tbody tr td#action .edit-icon {
+    color: green;
+  }
+  .collab-list-table tbody tr td#action .delete-icon {
+    color: red;
+  }
+  .collab-list-table tbody tr td#action button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    user-select: none;
+  }
+}
+@media screen and (min-width: 610px) and (max-width: 680px) {
+  .collab-list-thead th:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 500px) {
+  .collab-list-thead th:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 600px) {
+  .collab-list-table {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-top: 25px;
+    color: #f4f4f4;
+  }
+  .collab-list-table .collab-list-thead {
+    display: flex;
+    border-bottom: 1px solid #d9d9d9;
+  }
+  .collab-list-table .collab-list-thead tr {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    user-select: none;
+    width: 100%;
+  }
+  .collab-list-table .collab-list-thead tr th {
+    font-weight: bold;
+    text-align: center;
+    user-select: none;
+    padding-bottom: 10px;
+    width: 20%;
+    font-size: 1.3rem;
+  }
+  .collab-list-table .collab-list-thead tr th:nth-child(2) {
+    display: none;
+  }
+  .collab-list-table tbody tr {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    user-select: none;
+    padding: 5px 0 8px;
+  }
+  .collab-list-table tbody tr:nth-child(odd) {
+    background-color: #535353;
+  }
+  .collab-list-table tbody tr:nth-child(even) {
+    background-color: #353535;
+  }
+  .collab-list-table tbody tr td {
+    width: 20%;
+    outline: none;
+    border: none;
+    user-select: none;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+  .collab-list-table tbody tr td:nth-child(2) {
+    display: none;
+  }
+  .collab-list-table tbody tr td .euro {
+    text-decoration: none;
+    color: #f4f4e7;
+  }
+  .collab-list-table tbody tr td#action {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1.1rem;
+  }
+  .collab-list-table tbody tr td#action .icon {
+    font-size: 16px;
+  }
+  .collab-list-table tbody tr td#action .icon .edit {
+    color: green;
+  }
+  .collab-list-table tbody tr td#action .icon .delete {
+    color: red;
+  }
+  .collab-list-table tbody tr td#action button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    user-select: none;
+  }
+}

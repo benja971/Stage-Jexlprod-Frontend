@@ -1,0 +1,147 @@
+.collab-form-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.collab-form-page .collab-title {
+  text-align: center;
+  margin: 20px 0 40px;
+  color: #f4f4f4;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+}
+.collab-form-page form.collab-form-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0;
+  margin: 0;
+  width: 50%;
+  height: 70vh;
+  background: #dddddd;
+  border-radius: 50px;
+}
+.collab-form-page form.collab-form-app .container-identite,
+.collab-form-page form.collab-form-app .container-infos {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+.collab-form-page form.collab-form-app .input-container {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  align-items: center;
+  font-weight: 500;
+}
+.collab-form-page form.collab-form-app .input-container label {
+  color: #f85a79;
+  margin-bottom: 3%;
+  user-select: none;
+  font-size: 18px;
+}
+.collab-form-page form.collab-form-app .input-container select {
+  cursor: pointer;
+}
+.collab-form-page form.collab-form-app .input-container select,
+.collab-form-page form.collab-form-app .input-container input {
+  width: 270px;
+  height: 35px;
+  border-radius: 30px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #f85a79;
+  border-bottom-right-radius: 0;
+  background: transparent;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  color: black;
+  font-size: 15px;
+}
+.collab-form-page form.collab-form-app .input-container select.error,
+.collab-form-page form.collab-form-app .input-container input.error {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 0.3em;
+}
+.collab-form-page form.collab-form-app .input-container select:-webkit-autofill, .collab-form-page form.collab-form-app .input-container select:-webkit-autofill:hover, .collab-form-page form.collab-form-app .input-container select:-webkit-autofill:focus, .collab-form-page form.collab-form-app .input-container select:-webkit-autofill:active,
+.collab-form-page form.collab-form-app .input-container input:-webkit-autofill,
+.collab-form-page form.collab-form-app .input-container input:-webkit-autofill:hover,
+.collab-form-page form.collab-form-app .input-container input:-webkit-autofill:focus,
+.collab-form-page form.collab-form-app .input-container input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #dddddd inset;
+  -webkit-text-fill-color: black;
+}
+.collab-form-page form.collab-form-app .input-container select:hover,
+.collab-form-page form.collab-form-app .input-container input:hover {
+  transform: scale(1.02);
+}
+.collab-form-page form.collab-form-app .input-container p {
+  user-select: none;
+  font-size: 14px;
+  color: red;
+  margin-top: 1%;
+}
+.collab-form-page form.collab-form-app .input-container p.invisible {
+  display: none;
+  transition: display 0.3s ease-in-out;
+}
+.collab-form-page form.collab-form-app .btn-container {
+  display: flex;
+  width: 40%;
+  justify-content: space-evenly;
+  align-items: center;
+  font-weight: 600;
+}
+.collab-form-page form.collab-form-app .btn-container button {
+  margin-top: 3%;
+  width: 120px;
+  height: 30px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  box-shadow: 2px 2px 5px grey;
+  user-select: none;
+  vertical-align: middle;
+  font-weight: 600;
+  font-size: 18px;
+  background: #ffffff;
+  padding-top: 3px;
+  color: black;
+}
+.collab-form-page form.collab-form-app .btn-container button:active {
+  box-shadow: none;
+}
+.collab-form-page form.collab-form-app .btn-container button.valid:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 7px lightgreen;
+}
+.collab-form-page form.collab-form-app .btn-container button.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.collab-form-page form.collab-form-app .btn-container a {
+  text-decoration: none;
+  color: black;
+  background-color: #f4f4f4;
+  width: 120px;
+  text-align: center;
+  margin-top: 3%;
+  height: 30px;
+  box-shadow: 2px 2px 5px grey;
+  user-select: none;
+  border-radius: 5px;
+  padding-top: 2px;
+}
+.collab-form-page form.collab-form-app .btn-container a.cancel:hover {
+  cursor: pointer;
+  box-shadow: -2px 2px 7px red;
+}
+.collab-form-page form.collab-form-app .btn-container a:active {
+  box-shadow: none;
+}
+
+/*# sourceMappingURL=CollabForm.css.map */

@@ -112,54 +112,66 @@ export default function CollabForm() {
 	}, []);
 
 	return (
-		<>
-			<h1>{isNew ? "Nouveau " : "Modifier un "}Collaborateur</h1>
-			<form className='form-app' onSubmit={handleSubmit}>
+		<div className='collab-form-page'>
+			<h1 className='collab-title'>{isNew ? "Nouveau " : "Modifier un "}Collaborateur</h1>
+			<form className='collab-form-app' onSubmit={handleSubmit}>
 				<input type='hidden' name='id' value={collab.id} />
+				<div className='input-container collab-civilite'>
+					<label htmlFor='civilite'>Civilité</label>
+					<select ref={addInputToRef} name='civilite' value={collab.civilite} onChange={handleChange}>
+						<option value='M'>M</option>
+						<option value='Mme'>Mme</option>
+						<option value='Mlle'>Mlle</option>
+					</select>
+				</div>
+				<div className='container-identite'>
+					<div className='input-container collab-nom'>
+						<label htmlFor='nom'>Nom</label>
+						<input ref={addInputToRef} type='text' name='nom' placeholder='Nom du collaborateur' value={collab.nom} onChange={handleChange} />
+						<p ref={addPToRef} id='nom-error-container' className='invisible'>
+							Le nom doit faire plus d'un caractère
+						</p>
+					</div>
 
-				<label htmlFor='civilite'>Civilité</label>
-				<select ref={addInputToRef} name='civilite' value={collab.civilite} onChange={handleChange}>
-					<option value='M'>M</option>
-					<option value='Mme'>Mme</option>
-					<option value='Mlle'>Mlle</option>
-				</select>
+					<div className='input-container collab-prenom'>
+						<label htmlFor='prenom'>Prénom</label>
+						<input ref={addInputToRef} type='text' name='prenom' placeholder='Prénom du collaborateur' value={collab.prenom} onChange={handleChange} />
+						<p ref={addPToRef} id='prenom-error-container' className='invisible'>
+							Le prénom doit faire plus d'un caractère
+						</p>
+					</div>
+				</div>
 
-				<label htmlFor='nom'>Nom</label>
-				<input ref={addInputToRef} type='text' name='nom' placeholder='Nom du collaborateur' value={collab.nom} onChange={handleChange} />
-				<p ref={addPToRef} id='nom-error-container' className='invisible'>
-					Le nom doit faire plus d'un' caractère
-				</p>
-
-				<label htmlFor='prenom'>Prénom</label>
-				<input ref={addInputToRef} type='text' name='prenom' placeholder='Prénom du collaborateur' value={collab.prenom} onChange={handleChange} />
-				<p ref={addPToRef} id='prenom-error-container' className='invisible'>
-					Le prénom doit faire plus d'un caractère
-				</p>
-
-				<label htmlFor='email'>Email</label>
-				<input ref={addInputToRef} type='email' name='email' placeholder='Email du collaborateur' value={collab.email} onChange={handleChange} />
-				<p ref={addPToRef} id='email-error-container' className='invisible'>
-					L'adresse email entrée est invalide
-				</p>
-
-				<label htmlFor='remunération'>Grille de rémunération</label>
-				<select ref={addInputToRef} name='statut' value={collab.statut} onChange={handleChange}>
-					{roles.map(role => {
-						return (
-							<option key={uuidv4()} value={role.id_role}>
-								{role.nom}
-							</option>
-						);
-					})}
-				</select>
-
+				<div className='container-infos'>
+					<div className='input-container collab-email'>
+						<label htmlFor='email'>Email</label>
+						<input ref={addInputToRef} type='email' name='email' placeholder='Email du collaborateur' value={collab.email} onChange={handleChange} />
+						<p ref={addPToRef} id='email-error-container' className='invisible'>
+							L'adresse email entrée est invalide
+						</p>
+					</div>
+					<div className='input-container collab-statut'>
+						<label htmlFor='remunération'>Grille de rémunération</label>
+						<select ref={addInputToRef} name='statut' value={collab.statut} onChange={handleChange}>
+							{roles.map(role => {
+								return (
+									<option key={uuidv4()} value={role.id_role}>
+										{role.nom}
+									</option>
+								);
+							})}
+						</select>
+					</div>
+				</div>
 				<div className='btn-container'>
-					<Link to={"/collaborateurs"}>Annuler</Link>
-					<button type='submit' id='submit' className={!isFormValid ? "disabled" : ""} {...(!isFormValid && { disabled: true })}>
+					<Link className='cancel' to={"/collaborateurs"}>
+						Annuler
+					</Link>
+					<button type='submit' id='submit' className={!isFormValid ? "disabled valid" : "valid"} {...(!isFormValid && { disabled: true })}>
 						Valider
 					</button>
 				</div>
 			</form>
-		</>
+		</div>
 	);
 }
