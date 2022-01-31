@@ -11,37 +11,81 @@
   user-select: none;
   width: 100%;
   height: 100%;
+  font-size: 2.7em;
+}
+@media screen and (max-width: 750px) {
+  .collab-form-page .collab-title {
+    font-size: 2em;
+  }
 }
 .collab-form-page form.collab-form-app {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  padding: 0;
-  margin: 0;
-  width: 50%;
-  height: 70vh;
-  background: #dddddd;
-  border-radius: 50px;
+  margin-bottom: 20px;
+}
+@media screen and (min-width: 750px) {
+  .collab-form-page form.collab-form-app {
+    width: 780px;
+    height: 450px;
+    background: #dddddd;
+    border-radius: 50px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .collab-form-page form.collab-form-app {
+    width: 90%;
+    min-width: 290px;
+    height: auto;
+    background: #dddddd;
+    border-radius: 50px;
+    padding-top: 15px;
+  }
 }
 .collab-form-page form.collab-form-app .container-identite,
 .collab-form-page form.collab-form-app .container-infos {
   display: flex;
   justify-content: center;
-  gap: 50px;
+}
+@media screen and (min-width: 750px) {
+  .collab-form-page form.collab-form-app .container-identite,
+.collab-form-page form.collab-form-app .container-infos {
+    gap: 50px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .collab-form-page form.collab-form-app .container-identite,
+.collab-form-page form.collab-form-app .container-infos {
+    flex-direction: column;
+  }
 }
 .collab-form-page form.collab-form-app .input-container {
   display: flex;
   flex-direction: column;
-  width: 40%;
   align-items: center;
-  font-weight: 500;
+  font-weight: 600;
+}
+@media screen and (max-width: 750px) {
+  .collab-form-page form.collab-form-app .input-container {
+    margin-bottom: 15px;
+  }
+}
+@media screen and (min-width: 750px) {
+  .collab-form-page form.collab-form-app .input-container {
+    width: 40%;
+  }
 }
 .collab-form-page form.collab-form-app .input-container label {
   color: #f85a79;
-  margin-bottom: 3%;
+  margin-bottom: 2%;
   user-select: none;
-  font-size: 18px;
+  font-size: 20px;
+}
+@media screen and (max-width: 750px) {
+  .collab-form-page form.collab-form-app .input-container label {
+    margin-top: 10px;
+  }
 }
 .collab-form-page form.collab-form-app .input-container select {
   cursor: pointer;
@@ -96,6 +140,12 @@
   align-items: center;
   font-weight: 600;
 }
+@media screen and (max-width: 750px) {
+  .collab-form-page form.collab-form-app .btn-container {
+    width: 80%;
+    margin: 10px 0 15px;
+  }
+}
 .collab-form-page form.collab-form-app .btn-container button {
   margin-top: 3%;
   width: 120px;
@@ -111,6 +161,11 @@
   background: #ffffff;
   padding-top: 3px;
   color: black;
+}
+@media screen and (max-width: 750px) {
+  .collab-form-page form.collab-form-app .btn-container button {
+    width: 90px;
+  }
 }
 .collab-form-page form.collab-form-app .btn-container button:active {
   box-shadow: none;
@@ -136,6 +191,11 @@
   border-radius: 5px;
   padding-top: 2px;
 }
+@media screen and (max-width: 750px) {
+  .collab-form-page form.collab-form-app .btn-container a {
+    width: 90px;
+  }
+}
 .collab-form-page form.collab-form-app .btn-container a.cancel:hover {
   cursor: pointer;
   box-shadow: -2px 2px 7px red;
@@ -143,5 +203,3 @@
 .collab-form-page form.collab-form-app .btn-container a:active {
   box-shadow: none;
 }
-
-/*# sourceMappingURL=CollabForm.css.map */

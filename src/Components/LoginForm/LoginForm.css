@@ -4,18 +4,38 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 380px;
+    width: max(290px, 70%);
     height: 480px;
     background-color: #dddddd;
     border-radius: 10px;
   }
   .form-box .login-form {
     width: 100%;
-    height: 50%;
+    height: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+  }
+  .form-box .login-form #opened_eye,
+.form-box .login-form #closed_eye {
+    position: relative;
+    top: -53%;
+    right: -100px;
+    cursor: pointer;
+  }
+  .form-box .login-form #opened_eye.invisible,
+.form-box .login-form #closed_eye.invisible {
+    opacity: 0;
+  }
+  .form-box .login-form .forgotten {
+    color: #999;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: underline;
+  }
+  .form-box .login-form .forgotten:hover {
+    color: #f85a79;
   }
   .form-box .login-form .check-container {
     width: 100%;
@@ -36,7 +56,6 @@
   }
   .form-box .login-form .input-group .invisible {
     opacity: 0;
-    background: black;
   }
   .form-box .login-form .input-group .input-field {
     width: 100%;
@@ -58,6 +77,15 @@
   .form-box .login-form .input-group .input-field:first-child {
     margin-bottom: 15px;
   }
+  .form-box .login-form .input-group p {
+    font-size: 14px;
+    color: red;
+    margin-left: 50px;
+    margin-top: 5px;
+  }
+  .form-box .login-form .input-group p.invisible {
+    opacity: 0;
+  }
   .form-box .login-form .input-group .forgotten {
     color: #999;
     cursor: pointer;
@@ -74,8 +102,7 @@
     bottom: 65px;
     position: absolute;
   }
-  .form-box .login-form .submit-btn {
-    width: 40%;
+  .form-box .login-form .login-btn-container .submit-btn {
     padding: 10px 30px;
     cursor: pointer;
     display: block;
@@ -87,7 +114,7 @@
     border-radius: 30px;
     transition: box-shadow 0.2s;
   }
-  .form-box .login-form .submit-btn:hover {
+  .form-box .login-form .login-btn-container .submit-btn:hover {
     box-shadow: 0px 0px 10px #f8577dff;
   }
 }
@@ -98,7 +125,7 @@
     justify-content: space-around;
     align-items: center;
     width: 700px;
-    height: 350px;
+    height: 400px;
     background-color: #dddddd;
     border-radius: 10px;
   }
@@ -124,16 +151,14 @@
     cursor: pointer;
   }
   .form-box .login-form .input-group {
-    display: flex;
     width: 100%;
-    justify-content: space-evenly;
-  }
-  .form-box .login-form .input-group .invisible {
-    display: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
   .form-box .login-form .input-group .input-field {
-    padding: 10px 0;
-    width: 35%;
+    width: 80%;
+    margin-left: 9%;
+    padding: 15px 0;
     border: none;
     border-bottom: 1px solid #999;
     outline: none;
@@ -141,12 +166,34 @@
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     padding-left: 15px;
+    font-size: 16px;
+    letter-spacing: 1.5px;
   }
   .form-box .login-form .input-group .input-field:-webkit-autofill, .form-box .login-form .input-group .input-field:-webkit-autofill:hover, .form-box .login-form .input-group .input-field:-webkit-autofill:focus, .form-box .login-form .input-group .input-field:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px #dddddd inset;
   }
   .form-box .login-form .input-group .input-field:focus {
     border-bottom: 1px solid #000;
+  }
+  .form-box .login-form .input-group p {
+    font-size: 14px;
+    color: red;
+    margin-left: 50px;
+    margin-top: 5px;
+  }
+  .form-box .login-form .input-group p.invisible {
+    opacity: 0;
+  }
+  .form-box .login-form #opened_eye,
+.form-box .login-form #closed_eye {
+    position: relative;
+    right: -42%;
+    top: -32%;
+    cursor: pointer;
+  }
+  .form-box .login-form #opened_eye.invisible,
+.form-box .login-form #closed_eye.invisible {
+    opacity: 0;
   }
   .form-box .login-form .forgotten {
     color: #999;

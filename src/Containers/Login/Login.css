@@ -1,59 +1,79 @@
 .hero {
   height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100vw;
   user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.hero .deco.animate {
-  animation: rotation linear 10s infinite;
+.hero .deco {
+  z-index: -1;
 }
 .hero .deco#un {
   border-radius: 23% 77% 40% 60%/30% 45% 55% 70%;
   top: 15%;
   left: 50px;
   position: absolute;
-  background-color: #f85a79;
   width: 150px;
   height: 150px;
   background: #f8577d;
   background: radial-gradient(circle, #f8577d 0%, rgba(248, 87, 182, 0.6898109586) 100%);
+  box-shadow: 20px 5px 70px 10px #f857b6;
 }
 .hero .deco#deux {
-  z-index: -1;
   border-radius: 0% 100% 100% 0%/51% 100% 0% 49%;
   bottom: 0;
   left: 0;
   position: absolute;
-  background-color: #f85a79;
   width: 450px;
   height: 450px;
   background: #eeaeca;
   background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
+  box-shadow: 20px 5px 70px 10px #94bbe9;
+}
+@media screen and (max-width: 750px) {
+  .hero .deco#deux {
+    width: min(450px, 100%);
+    height: min(450px, 100%);
+  }
 }
 .hero .deco#trois {
   border-radius: 69% 31% 37% 63%/51% 44% 56% 49%;
   top: 20px;
-  left: 50%;
+  right: 120px;
   position: absolute;
-  background-color: #f85a79;
   width: 200px;
   height: 150px;
-  background: #eeaeca;
-  background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
+  background: #3c6576;
+  background: radial-gradient(circle, #73c6b8 5%, #3c6576 100%);
+  box-shadow: 20px 5px 70px 10px #3c6576;
 }
 .hero .deco#quatre {
   border-radius: 78% 22% 40% 60%/58% 0% 100% 42%;
-  top: 55%;
-  right: 50px;
+  top: 60%;
+  right: 170px;
   transform: rotate(90deg);
   position: absolute;
-  background-color: #f85a79;
   width: 225px;
   height: 225px;
-  background: #eeaeca;
-  background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
+  background: #f2f1ee;
+  background: radial-gradient(circle, #f2f1ee -50%, #f8577d 100%);
+  box-shadow: 20px 5px 70px 10px #f8577d;
+}
+.hero .deco#cinq {
+  border-radius: 62% 38% 64% 36%/65% 33% 67% 35%;
+  top: 2%;
+  right: 590px;
+  transform: rotate(90deg);
+  position: absolute;
+  width: 425px;
+  height: 425px;
+  background: #73c6b8;
+  background: radial-gradient(circle, #73c6b8 0%, #f2f1ee 100%);
+  box-shadow: 20px 5px 70px 10px #94bbe9;
+}
+.hero .form-box img {
+  width: 280px;
 }
 
 @keyframes rotation {
