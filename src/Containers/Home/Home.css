@@ -43,13 +43,24 @@
   padding: 5px 10px;
   display: flex;
   gap: 10px;
+  font-weight: 600;
 }
 .header .btn-add:hover {
   box-shadow: 3px 3px 6px #f4f4f4;
 }
 
-@media screen and (max-width: 600px) {
-  .btn-add span {
+@media screen and (max-width: 650px) {
+  .header a.btn-add i {
+    font-size: 20px;
+  }
+  .header a.btn-add span {
     display: none;
+  }
+  .header .annee-container label.label-annee {
+    display: none;
+  }
+  .header .annee-container select.select-annee {
+    width: 60px;
+    font-size: 15px;
   }
 }

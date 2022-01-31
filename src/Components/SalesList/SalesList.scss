@@ -1,0 +1,362 @@
+$max-th-font-size: 1.7rem;
+$max-td-font-size: 1.3rem;
+
+$medium-th-font-size: 1.5rem;
+$medium-td-font-size: 1.3rem;
+
+$min-th-font-size: 1.3rem;
+$min-td-font-size: 1.1rem;
+
+@media screen and (min-width: 768px) {
+	.salesList {
+		width: 100%;
+		display: flex;
+		justify-content: space-evenly;
+		flex-direction: column;
+		margin-top: 25px;
+		color: #f4f4f4;
+
+		thead {
+			display: flex;
+			border-bottom: 1px solid #d9d9d9;
+
+			tr {
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+				user-select: none;
+				width: 100%;
+				gap: 30px;
+
+				th {
+					text-align: center;
+					user-select: none;
+					padding-bottom: 10px;
+					font-size: 20px;
+					width: calc(100% / 6);
+					font-size: $max-th-font-size;
+					word-wrap: break-word;
+				}
+			}
+		}
+
+		tbody {
+			tr {
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+				user-select: none;
+				width: 100%;
+				gap: 30px;
+
+				td {
+					text-align: center;
+					user-select: none;
+					padding-bottom: 10px;
+					font-size: 20px;
+					width: calc(100% / 6);
+					font-size: $max-td-font-size;
+
+					&#action {
+						display: flex;
+						justify-content: center;
+						gap: 30px;
+
+						button {
+							border: none;
+							outline: none;
+							background-color: transparent;
+							cursor: pointer;
+							user-select: none;
+
+							.delete-icon {
+								color: red;
+							}
+						}
+
+						i {
+							cursor: pointer;
+							transform: scale(1.2);
+
+							&.edit-icon {
+								color: green;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.salesList {
+		width: 100%;
+		display: flex;
+		justify-content: space-evenly;
+		flex-direction: column;
+		margin-top: 25px;
+		color: #f4f4f4;
+
+		thead {
+			display: flex;
+			border-bottom: 1px solid #d9d9d9;
+
+			tr {
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+				user-select: none;
+				width: 100%;
+				gap: 30px;
+
+				th {
+					text-align: center;
+					user-select: none;
+					padding-bottom: 10px;
+					font-size: 20px;
+					width: calc(100% / 5);
+					font-size: $medium-th-font-size;
+
+					&:nth-child(3) {
+						display: none;
+					}
+				}
+			}
+		}
+
+		tbody {
+			tr {
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+				user-select: none;
+				width: 100%;
+				gap: 30px;
+
+				td {
+					text-align: center;
+					user-select: none;
+					padding-bottom: 10px;
+					font-size: 20px;
+					width: calc(100% / 5);
+					font-size: $medium-td-font-size;
+
+					&:nth-child(3) {
+						display: none;
+					}
+
+					&#action {
+						display: flex;
+						justify-content: center;
+						gap: 30px;
+
+						button {
+							border: none;
+							outline: none;
+							background-color: transparent;
+							cursor: pointer;
+							user-select: none;
+
+							.delete-icon {
+								color: red;
+							}
+						}
+
+						i {
+							cursor: pointer;
+
+							&.edit-icon {
+								color: green;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.salesList {
+		width: 100%;
+		display: flex;
+		justify-content: space-evenly;
+		flex-direction: column;
+		margin-top: 25px;
+		color: #f4f4f4;
+
+		thead {
+			display: flex;
+			border-bottom: 1px solid #d9d9d9;
+
+			tr {
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+				user-select: none;
+				width: 100%;
+				gap: 30px;
+
+				th {
+					text-align: center;
+					user-select: none;
+					padding-bottom: 10px;
+					font-size: 20px;
+					width: calc(100% / 4);
+					font-size: $medium-th-font-size;
+
+					&:nth-child(3),
+					&:nth-child(2) {
+						display: none;
+					}
+				}
+			}
+		}
+
+		tbody {
+			tr {
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+				user-select: none;
+				width: 100%;
+				gap: 30px;
+
+				td {
+					text-align: center;
+					user-select: none;
+					padding-bottom: 10px;
+					font-size: 20px;
+					width: calc(100% / 4);
+					font-size: $medium-td-font-size;
+
+					&:nth-child(3),
+					&:nth-child(2) {
+						display: none;
+					}
+
+					&#action {
+						display: flex;
+						justify-content: center;
+						gap: 30px;
+
+						button {
+							border: none;
+							outline: none;
+							background-color: transparent;
+							cursor: pointer;
+							user-select: none;
+
+							.delete-icon {
+								color: red;
+							}
+						}
+
+						i {
+							cursor: pointer;
+							transform: scale(1.2);
+
+							&.edit-icon {
+								color: green;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.salesList {
+		width: 100%;
+		display: flex;
+		justify-content: space-evenly;
+		flex-direction: column;
+		margin-top: 25px;
+		color: #f4f4f4;
+
+		thead {
+			display: flex;
+			border-bottom: 1px solid #d9d9d9;
+
+			tr {
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+				user-select: none;
+				width: 100%;
+				gap: 30px;
+
+				th {
+					text-align: center;
+					user-select: none;
+					padding-bottom: 10px;
+					font-size: 20px;
+					width: calc(100% / 3);
+					font-size: $min-th-font-size;
+
+					&:nth-child(3),
+					&:nth-child(2),
+					&:nth-child(5) {
+						display: none;
+					}
+				}
+			}
+		}
+
+		tbody {
+			tr {
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+				user-select: none;
+				width: 100%;
+				gap: 30px;
+
+				td {
+					text-align: center;
+					user-select: none;
+					padding-bottom: 10px;
+					font-size: 20px;
+					width: calc(100% / 3);
+					font-size: $min-td-font-size;
+
+					&:nth-child(3),
+					&:nth-child(2),
+					&:nth-child(5) {
+						display: none;
+					}
+
+					&#action {
+						display: flex;
+						justify-content: center;
+						gap: 30px;
+
+						button {
+							border: none;
+							outline: none;
+							background-color: transparent;
+							cursor: pointer;
+							user-select: none;
+
+							.delete-icon {
+								color: red;
+							}
+						}
+
+						i {
+							cursor: pointer;
+							transform: scale(0.99);
+
+							&.edit-icon {
+								color: green;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -46,6 +46,7 @@
 		padding: 5px 10px;
 		display: flex;
 		gap: 10px;
+		font-weight: 600;
 
 		&:hover {
 			box-shadow: 3px 3px 6px #f4f4f4;
@@ -53,10 +54,26 @@
 	}
 }
 
-@media screen and (max-width: 600px) {
-	.btn-add {
-		span {
-			display: none;
+@media screen and (max-width: 650px) {
+	.header {
+		a.btn-add {
+			i {
+				font-size: 20px;
+			}
+
+			span {
+				display: none;
+			}
+		}
+
+		.annee-container {
+			label.label-annee {
+				display: none;
+			}
+			select.select-annee {
+				width: 60px;
+				font-size: 15px;
+			}
 		}
 	}
 }

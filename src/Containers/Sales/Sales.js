@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
+import "./Sales.css";
 
 export default function Sales() {
 	const isLogged = useSelector(state => state.loginReducer.isLogged);
@@ -50,11 +51,13 @@ export default function Sales() {
 		<>
 			<div className='header'>
 				<Link to={"/collaborateurs"} className='btn-add'>
-					Retour
+					<i className='material-icons'>arrow_back</i>
+					<span>Retour</span>
 				</Link>
 
 				<Link className='btn-add' to={"/ventes/vente#nouvelle-vente"} state={{ id, annee, nouveau: true }}>
-					Ajouter une vente
+					<i className='material-icons'>playlist_add</i>
+					<span>Ajouter une vente</span>
 				</Link>
 
 				<div className='annee-container'>

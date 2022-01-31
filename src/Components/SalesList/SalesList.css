@@ -1,0 +1,290 @@
+@media screen and (min-width: 768px) {
+  .salesList {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-top: 25px;
+    color: #f4f4f4;
+  }
+  .salesList thead {
+    display: flex;
+    border-bottom: 1px solid #d9d9d9;
+  }
+  .salesList thead tr {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    user-select: none;
+    width: 100%;
+    gap: 30px;
+  }
+  .salesList thead tr th {
+    text-align: center;
+    user-select: none;
+    padding-bottom: 10px;
+    font-size: 20px;
+    width: 16.6666666667%;
+    font-size: 1.7rem;
+    word-wrap: break-word;
+  }
+  .salesList tbody tr {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    user-select: none;
+    width: 100%;
+    gap: 30px;
+  }
+  .salesList tbody tr td {
+    text-align: center;
+    user-select: none;
+    padding-bottom: 10px;
+    font-size: 20px;
+    width: 16.6666666667%;
+    font-size: 1.3rem;
+  }
+  .salesList tbody tr td#action {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  .salesList tbody tr td#action button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    user-select: none;
+  }
+  .salesList tbody tr td#action button .delete-icon {
+    color: red;
+  }
+  .salesList tbody tr td#action i {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+  .salesList tbody tr td#action i.edit-icon {
+    color: green;
+  }
+}
+@media screen and (max-width: 900px) {
+  .salesList {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-top: 25px;
+    color: #f4f4f4;
+  }
+  .salesList thead {
+    display: flex;
+    border-bottom: 1px solid #d9d9d9;
+  }
+  .salesList thead tr {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    user-select: none;
+    width: 100%;
+    gap: 30px;
+  }
+  .salesList thead tr th {
+    text-align: center;
+    user-select: none;
+    padding-bottom: 10px;
+    font-size: 20px;
+    width: 20%;
+    font-size: 1.5rem;
+  }
+  .salesList thead tr th:nth-child(3) {
+    display: none;
+  }
+  .salesList tbody tr {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    user-select: none;
+    width: 100%;
+    gap: 30px;
+  }
+  .salesList tbody tr td {
+    text-align: center;
+    user-select: none;
+    padding-bottom: 10px;
+    font-size: 20px;
+    width: 20%;
+    font-size: 1.3rem;
+  }
+  .salesList tbody tr td:nth-child(3) {
+    display: none;
+  }
+  .salesList tbody tr td#action {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  .salesList tbody tr td#action button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    user-select: none;
+  }
+  .salesList tbody tr td#action button .delete-icon {
+    color: red;
+  }
+  .salesList tbody tr td#action i {
+    cursor: pointer;
+  }
+  .salesList tbody tr td#action i.edit-icon {
+    color: green;
+  }
+}
+@media screen and (max-width: 650px) {
+  .salesList {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-top: 25px;
+    color: #f4f4f4;
+  }
+  .salesList thead {
+    display: flex;
+    border-bottom: 1px solid #d9d9d9;
+  }
+  .salesList thead tr {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    user-select: none;
+    width: 100%;
+    gap: 30px;
+  }
+  .salesList thead tr th {
+    text-align: center;
+    user-select: none;
+    padding-bottom: 10px;
+    font-size: 20px;
+    width: 25%;
+    font-size: 1.5rem;
+  }
+  .salesList thead tr th:nth-child(3), .salesList thead tr th:nth-child(2) {
+    display: none;
+  }
+  .salesList tbody tr {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    user-select: none;
+    width: 100%;
+    gap: 30px;
+  }
+  .salesList tbody tr td {
+    text-align: center;
+    user-select: none;
+    padding-bottom: 10px;
+    font-size: 20px;
+    width: 25%;
+    font-size: 1.3rem;
+  }
+  .salesList tbody tr td:nth-child(3), .salesList tbody tr td:nth-child(2) {
+    display: none;
+  }
+  .salesList tbody tr td#action {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  .salesList tbody tr td#action button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    user-select: none;
+  }
+  .salesList tbody tr td#action button .delete-icon {
+    color: red;
+  }
+  .salesList tbody tr td#action i {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+  .salesList tbody tr td#action i.edit-icon {
+    color: green;
+  }
+}
+@media screen and (max-width: 450px) {
+  .salesList {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-top: 25px;
+    color: #f4f4f4;
+  }
+  .salesList thead {
+    display: flex;
+    border-bottom: 1px solid #d9d9d9;
+  }
+  .salesList thead tr {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    user-select: none;
+    width: 100%;
+    gap: 30px;
+  }
+  .salesList thead tr th {
+    text-align: center;
+    user-select: none;
+    padding-bottom: 10px;
+    font-size: 20px;
+    width: 33.3333333333%;
+    font-size: 1.3rem;
+  }
+  .salesList thead tr th:nth-child(3), .salesList thead tr th:nth-child(2), .salesList thead tr th:nth-child(5) {
+    display: none;
+  }
+  .salesList tbody tr {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    user-select: none;
+    width: 100%;
+    gap: 30px;
+  }
+  .salesList tbody tr td {
+    text-align: center;
+    user-select: none;
+    padding-bottom: 10px;
+    font-size: 20px;
+    width: 33.3333333333%;
+    font-size: 1.1rem;
+  }
+  .salesList tbody tr td:nth-child(3), .salesList tbody tr td:nth-child(2), .salesList tbody tr td:nth-child(5) {
+    display: none;
+  }
+  .salesList tbody tr td#action {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  .salesList tbody tr td#action button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    user-select: none;
+  }
+  .salesList tbody tr td#action button .delete-icon {
+    color: red;
+  }
+  .salesList tbody tr td#action i {
+    cursor: pointer;
+    transform: scale(0.99);
+  }
+  .salesList tbody tr td#action i.edit-icon {
+    color: green;
+  }
+}
